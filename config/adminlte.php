@@ -241,7 +241,7 @@ return [
         ],
 
         [
-            'text'    => 'Church Projects',
+            'text'    => 'Church Events',
             'icon'    => 'fas fa-fw fa-calendar-week',
             'submenu' => [
                 [
@@ -260,7 +260,7 @@ return [
         ],
 
         [
-            'text'    => 'Church Events',
+            'text'    => 'Church Projects',
             'icon'    => 'fas fa-fw fa-hammer',
             'submenu' => [
                 [
@@ -304,6 +304,25 @@ return [
                             'icon'    => 'fas fa-fw fa-users',
                         ],
                     ],
+
+                ],
+            ],
+        ],
+
+        [
+            'text'    => 'Fund drive',
+            'icon'    => 'fas fa-fw fa-search-dollar',
+            'submenu' => [
+                [
+                    'text' => 'List All Fund Drives',
+                    'url'  => 'fundraiser/index',
+                    'icon'    => 'fas fa-fw fa-angle-right',
+
+                ],
+                [
+                    'text' => 'Create a New Fund Drive',
+                    'url'  => 'fundraiser/create',
+                    'icon'    => 'fas fa-fw fa-angle-right',
 
                 ],
             ],

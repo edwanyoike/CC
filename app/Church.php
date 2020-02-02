@@ -15,41 +15,40 @@ class Church extends Model
         return $this->morphMany('App\member', 'memberable');
     }
 
-    public function address()
-    {
-        return $this->morphOne('App\Address', 'addressable');
-    }
-
-
-
     public function departments()
     {
         return $this->morphMany('App\Department','departmentable');
 
     }
 
+    public function projects()
+    {
+        return $this->morphToMany(Project::class, 'projectable');
+    }
+
+
+    public function address()
+    {
+        return $this->morphOne('App\Address', 'addressable');
+    }
+
 
     public function Contributions()
     {
-        return $this->morphMany('App\Contribution','contributionable');
+        return $this->morphMany('App\Contribution', 'contributionable');
 
     }
 
-    public function projects()
+
+    public function fundraisers()
     {
-        return $this->morphMany('App\Project','projectable');
-
+        return $this->morphToMany(Fundraiser::class, 'fundraiserable');
     }
 
-    public function fundraiser()
-    {
-        return $this->morphMany('App\Fundraiser','fundraiserable');
-
-    }
 
     public function Events()
     {
-        return $this->morphMany('App\Event','eventable');
+        return $this->morphMany('App\Event', 'eventable');
 
     }
 

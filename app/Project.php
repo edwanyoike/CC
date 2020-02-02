@@ -6,10 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    //
 
-    public function projectable()
+    public function departments()
     {
-        return $this->morphTo();
+        return $this->morphedByMany(Department::class, 'projectable');
+    }
+
+    public function churches()
+    {
+        return $this->morphedByMany(Church::class, 'projectable');
     }
 }
