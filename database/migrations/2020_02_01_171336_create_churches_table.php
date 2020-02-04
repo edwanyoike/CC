@@ -16,6 +16,10 @@ class CreateChurchesTable extends Migration
         Schema::create('churches', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->string('name');
+            $table->boolean('isMotherChurch');
+
+
         });
     }
 

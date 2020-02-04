@@ -5,6 +5,8 @@
     @yield('css')
 @stop
 
+@section('plugins.Select2', true)
+
 @section('classes_body',
     (config('adminlte.sidebar_mini', true) === true ?
         'sidebar-mini ' :
@@ -186,6 +188,7 @@
 
 @section('adminlte_js')
     <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
+
     @stack('js')
     @yield('js')
 @stop

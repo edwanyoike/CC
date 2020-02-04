@@ -1,4 +1,3 @@
-
 @extends('adminlte::page')
 
 @section('title', 'Create Church')
@@ -7,37 +6,148 @@
     <h1>Create a New Church</h1>
 @stop
 
+
+
+
 @section('content')
-    <form role="form">
-        <div class="box-body">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputFile">File input</label>
-                <input type="file" id="exampleInputFile">
+    <form method="POST" action="/church/store">
+        @csrf
 
-                <p class="help-block">Example block-level help text here.</p>
+        <div class="row ">
+
+            <div class="col-md-6 ">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Basic information</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                                    title="Collapse">
+                                <i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+
+                            <label for="inputName">Church Name</label>
+                            <input type="text" name="name" id="church-name" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="inputName">Phone Number</label>
+                            <input type="text" name="phoneNumber" id="phonenumber" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="inputName">Email Address</label>
+                            <input type="text" name="emailAddress" id="email_address" class="form-control">
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="inputDescription">Location Description</label>
+                            <textarea id="location" name="location" class="form-control" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputStatus">is it the mother church</label>
+                            <select class="form-control custom-select" id="is-mother-church" name="isMotherChurch">
+                                <option selected="" disabled="">select one</option>
+                                <option value="1">YES</option>
+                                <option value="0">NO</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
             </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> Check me out
-                </label>
+            <div class="col-md-6 form-control-sm" >
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Church Committe</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                                    title="Collapse">
+                                <i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <label>Vice Chair</label>
+                            <select class="form-control select2" style="width: 100%;">
+                                <option selected="selected">Alabama</option>
+                                <option>Alaska</option>
+                                <option disabled="disabled">California (disabled)</option>
+                                <option>Delaware</option>
+                                <option>Tennessee</option>
+                                <option>Texas</option>
+                                <option>Washington</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Lay Leader</label>
+                            <select class="form-control select2" style="width: 100%;">
+                                <option selected="selected">Alabama</option>
+                                <option>Alaska</option>
+                                <option disabled="disabled">California (disabled)</option>
+                                <option>Delaware</option>
+                                <option>Tennessee</option>
+                                <option>Texas</option>
+                                <option>Washington</option>
+                            </select>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="inputSpentBudget">Total amount spent</label>
+                            <input type="number" id="inputSpentBudget" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEstimatedDuration">Estimated project duration</label>
+                            <input type="number" id="inputEstimatedDuration" class="form-control">
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
             </div>
         </div>
-        <!-- /.box-body -->
 
-        <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
+
+        <div class="row ">
+            <div class="col-12">
+                <input type="submit" value="Create Church" class="btn btn-success float-right">
+            </div>
         </div>
+
     </form>
+
 @stop
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+
 @stop
+
+@section('js')
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2();
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            });
+
+        })
+    </script>
+@stop
+
