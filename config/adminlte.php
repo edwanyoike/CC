@@ -90,9 +90,9 @@ return [
     |
     */
 
-    'sidebar_mini' => true,
+    'sidebar_mini' => false,
     'sidebar_collapse' => false,
-    'sidebar_collapse_auto_size' => false,
+    'sidebar_collapse_auto_size' => true    ,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
     'sidebar_scrollbar_theme' => 'os-theme-light',
@@ -173,16 +173,7 @@ return [
     */
 
     'menu' => [
-        [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
+
         ['header' => 'Main Area'],
         [
             'text'    => 'Church Operations',
@@ -191,13 +182,13 @@ return [
                 [
                     'text' => 'List of All Churches',
                     'url'  => 'church/index',
-                    'icon'    => 'fas fa-fw fa-angle-right',
+                    'icon'    => '""',
 
                 ],
                 [
                     'text' => 'Create New Church',
                     'url'  => 'church/create',
-                    'icon'    => 'fas fa-fw fa-angle-right',
+                    'icon'    => '""',
                 ],
             ],
         ],
@@ -209,13 +200,13 @@ return [
                 [
                     'text' => 'List All Members',
                     'url'  => 'member/index',
-                    'icon'    => 'fas fa-fw fa-angle-right',
+                    'icon'    => '""',
 
                 ],
                 [
                     'text' => 'Create New Member',
                     'url'  => 'member/create',
-                    'icon'    => 'fas fa-fw fa-angle-right',
+                    'icon'    => '""',
 
                 ],
             ],
@@ -228,13 +219,13 @@ return [
                 [
                     'text' => 'List All Departments',
                     'url'  => 'Department/index',
-                    'icon'    => 'fas fa-fw fa-angle-right',
+                    'icon'    => '""',
 
                 ],
                 [
                     'text' => 'Create New Department',
                     'url'  => 'Department/create',
-                    'icon'    => 'fas fa-fw fa-angle-right',
+                    'icon'    => '""',
 
                 ],
             ],
@@ -247,13 +238,13 @@ return [
                 [
                     'text' => 'List All Events',
                     'url'  => 'event/index',
-                    'icon'    => 'fas fa-fw fa-angle-right',
+                    'icon'    => '""',
 
                 ],
                 [
                     'text' => 'Create a New Event',
                     'url'  => 'event/create',
-                    'icon'    => 'fas fa-fw fa-angle-right',
+                    'icon'    => '""',
 
                 ],
             ],
@@ -266,13 +257,13 @@ return [
                 [
                     'text' => 'List All Projects',
                     'url'  => 'project/index',
-                    'icon'    => 'fas fa-fw fa-angle-right',
+                    'icon'    => '""',
 
                 ],
                 [
                     'text' => 'Create a New Project',
                     'url'  => 'project/create',
-                    'icon'    => 'fas fa-fw fa-angle-right',
+                    'icon'    => '""',
 
                 ],
             ],
@@ -316,13 +307,13 @@ return [
                 [
                     'text' => 'List All Fund Drives',
                     'url'  => 'fundraiser/index',
-                    'icon'    => 'fas fa-fw fa-angle-right',
+                    'icon'    => '""',
 
                 ],
                 [
                     'text' => 'Create a New Fund Drive',
                     'url'  => 'fundraiser/create',
-                    'icon'    => 'fas fa-fw fa-angle-right',
+                    'icon'    => '""',
 
                 ],
             ],
@@ -392,37 +383,37 @@ return [
     'plugins' => [
         [
             'name' => 'Datatables',
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
                 ],
             ],
         ],
         [
             'name' => 'Select2',
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
                 ],
             ],

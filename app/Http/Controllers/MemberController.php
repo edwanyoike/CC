@@ -2,47 +2,74 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Address;
+use App\Church;
 use App\Member;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class MemberController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-        //
+        $members = Member::all();
+        return view("member.index")->with(
+            'members', $members
+        );
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
-        //
+        $churches = Church::all();
+
+        return view('member.create')->with(
+            'churches', $churches
+        );
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        // $this->validateRequest();
+
+        DB::transaction(function () {
+            $member = new Member(request(['firstName', 'secondName', 'gender']));
+            $church_id = request(['memberChurch']);
+
+            $church = Church::find(intval($church_id));
+
+            $church->members()->save($member);
+
+            $member->save();
+            $member->address()->save(new Address(request(['phoneNumber', 'emailAddress', 'location'])));
+
+        });
+
+        return redirect('member/index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Member  $member
-     * @return \Illuminate\Http\Response
+     * @param Member $member
+     * @return Response
      */
     public function show(Member $member)
     {
@@ -52,8 +79,8 @@ class MemberController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Member  $member
-     * @return \Illuminate\Http\Response
+     * @param Member $member
+     * @return Response
      */
     public function edit(Member $member)
     {
@@ -63,9 +90,9 @@ class MemberController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Member  $member
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Member $member
+     * @return Response
      */
     public function update(Request $request, Member $member)
     {
@@ -75,11 +102,28 @@ class MemberController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Member  $member
-     * @return \Illuminate\Http\Response
+     * @param Member $member
+     * @return Response
      */
     public function destroy(Member $member)
     {
         //
     }
+
+    protected function validateRequest()
+    {
+        return request()->validate([
+                'firstName' => 'required|max:255',
+                'secondName' => 'required|max:255',
+                'gender' => 'required|in:FEMALE,MALE',
+                'memberChurch' => 'required|integer|max:2',
+                'phoneNumber' => 'required',
+                'emailAddress' => 'unique:addresses|max:255',
+                'location' => 'required|max:255',
+            ]
+
+        );
+    }
+
+
 }

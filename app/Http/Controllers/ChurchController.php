@@ -6,6 +6,7 @@ use App\Address;
 use App\Church;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class ChurchController extends Controller
 {
@@ -18,7 +19,7 @@ class ChurchController extends Controller
     {
         $churches = Church::all();
         return view("church.index")->with(
-            'churches',$churches
+            'churches', $churches
         );
 
     }
@@ -42,10 +43,12 @@ class ChurchController extends Controller
     public function store()
     {
         $this->validateRequest();
-        $church = new Church(request(['name', 'isMotherChurch']));
-        $church->save();
+        DB::transaction(function () {
+            $church = new Church(request(['name', 'isMotherChurch']));
+            $church->save();
+            $church->address()->save(new Address(request(['phoneNumber', 'emailAddress', 'location'])));
+        });
 
-        $church->address()->save(new Address(request(['phoneNumber', 'emailAddress','location'])));
         return redirect('church/index');
 
     }
@@ -71,7 +74,7 @@ class ChurchController extends Controller
      */
     public function show(Church $church)
     {
-        //
+        return view("church.details");
     }
 
     /**

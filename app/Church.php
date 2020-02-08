@@ -9,7 +9,6 @@ class Church extends Model
     protected $table = 'churches';
     protected $guarded=[];
 
-    //
 
     public function members()
     {
@@ -52,6 +51,8 @@ class Church extends Model
         return $this->morphMany('App\Event', 'eventable');
 
     }
+
+
 
 
 }

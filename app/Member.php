@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Member extends Model
 {
-    //
+    protected $guarded=[];
+    protected $table = 'members';
+
+
     public function memberable()
     {
         return $this->morphTo();

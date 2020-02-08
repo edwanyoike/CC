@@ -22,5 +22,15 @@ Route::get('church/index', 'ChurchController@index');
 Route::get('church/create', 'ChurchController@create');
 Route::post('church/store', 'ChurchController@store');
 Route::post('church/update', 'ChurchController@store');
+Route::get('church/{church}', 'ChurchController@show');
+
+Route::get('member/index', 'MemberController@index');
+Route::get('member/create', 'MemberController@create');
+Route::post('member/store', 'MemberController@store');
+
+
+
+
+
 
 

@@ -7,42 +7,90 @@
 @stop
 @section('content')
 
-    <div class="col-12">
+
+    <section class="content">
+
+        <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Fixed Header Table</h3>
+                <h3 class="card-title">Projects</h3>
 
                 <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                        </div>
-                    </div>
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                            title="Collapse">
+                        <i class="fas fa-minus"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip"
+                            title="Remove">
+                        <i class="fas fa-times"></i></button>
                 </div>
             </div>
-            <!-- /.card-header -->
-            <div class="card-body table-responsive p-0" style="height: 300px;">
-                <table class="table table-head-fixed text-nowrap">
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
                     <thead>
-
                     <tr>
-                        <th>Church</th>
-                        <th>Congregants</th>
-                        <th>last sunday total contributions</th>
-                        <th>this month total contributions</th>
+                        <th style="width: 1%">
+                            #
+                        </th>
+                        <th style="width: 20%">
+                            Church
+                        </th>
+                        <th style="width: 30%">
+                            mama church
+                        </th>
+                        <th>
+                            congregants
+                        </th>
+                        <th style="width: 8%" class="text-center">
+                            last sunday contributions
+                        </th>
+                        <th style="width: 20%">
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($churches as $church)
-                        <tr>
-                            <td>{{$church->name}}</td>
-                            <td>{{$church->isMotherChurch}}</td>
-                            <td>{{24}}</td>
-                            <td>{{24}}</td>
 
+                    @foreach($churches as $church)
+
+
+
+                        <tr>
+                            <td>
+                                #
+                            </td>
+
+                            <td>
+                                <a>
+                                    {{$church->name}}</a>
+                                <br>
+                            </td>
+                            <td>
+                                {{$church->isMotherChurch}}
+                            </td>
+                            <td class="project_progress">
+                                {{56}}
+                            </td>
+                            <td class="project-state">
+                                {{12300}}
+                            </td>
+                            <td class="project-actions text-right">
+                                <a class="btn btn-primary btn-sm" href="{{$church->id}}">
+                                    <i class="fas fa-folder">
+                                    </i>
+                                    View
+                                </a>
+                                <a class="btn btn-info btn-sm" href="#">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    Edit
+                                </a>
+                                <a class="btn btn-danger btn-sm" href="#">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </a>
+                            </td>
                         </tr>
+
                     @endforeach
 
                     </tbody>
@@ -51,7 +99,8 @@
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
-    </div>
+
+    </section>
 
 @stop
 
