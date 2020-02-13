@@ -28,6 +28,14 @@ Route::get('member/index', 'MemberController@index');
 Route::get('member/create', 'MemberController@create');
 Route::post('member/store', 'MemberController@store');
 
+Route::get('department/index', 'DepartmentController@index');
+Route::get('department/create', 'DepartmentController@create');
+Route::post('department/store', 'DepartmentController@store');
+Route::get('department/event', 'DepartmentController@departmentEvents');
+Route::get('department/createEvent', 'DepartmentController@createDepartmentEvent');
+
+
+
 
 
 

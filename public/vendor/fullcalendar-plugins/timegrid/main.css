@@ -14,7 +14,7 @@
 
 .fc-timeGrid-view .fc-day-grid .fc-row .fc-content-skeleton {
   padding-bottom: 1em;
-  /* give space underneath events for clicking/selecting days */
+  /* give space underneath event for clicking/selecting days */
 }
 
 /* TimeGrid axis running down the side (for both the all-day area and the slot area)
@@ -138,12 +138,12 @@
 /* TimeGrid Event Containment
 --------------------------------------------------------------------------------------------------*/
 .fc-ltr .fc-time-grid .fc-event-container {
-  /* space on the sides of events for LTR (default) */
+  /* space on the sides of event for LTR (default) */
   margin: 0 2.5% 0 2px;
 }
 
 .fc-rtl .fc-time-grid .fc-event-container {
-  /* space on the sides of events for RTL */
+  /* space on the sides of event for RTL */
   margin: 0 2px 0 2.5%;
 }
 
@@ -155,7 +155,7 @@
 }
 
 .fc-time-grid .fc-bgevent {
-  /* background events always span full width */
+  /* background event always span full width */
   left: 0;
   right: 0;
 }
@@ -175,7 +175,7 @@ be a descendant of the grid when it is being dragged.
 }
 
 .fc-time-grid-event.fc-not-start {
-  /* events that are continuing from another day */
+  /* event that are continuing from another day */
   /* replace space made by the top border with padding */
   border-top-width: 0;
   padding-top: 1px;

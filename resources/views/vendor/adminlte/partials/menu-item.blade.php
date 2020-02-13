@@ -26,7 +26,7 @@
                     {{ $item['text'] }}
 
                     @if (isset($item['submenu']))
-                        <i class="fas fa-angle-left right"></i>
+{{--                        <i class="fas fa-angle-left right"></i>--}}
                     @endif
                     @if (isset($item['label']))
                         <span class="badge badge-{{ $item['label_color'] ?? 'primary' }} right">{{ $item['label'] }}</span>
@@ -34,8 +34,10 @@
                 </p>
             </a>
             @if (isset($item['submenu']))
-                <ul class="nav nav-treeview">
+                <ul class="nav nav-treeview" style="padding-left: 2em">
+
                     @each('adminlte::partials.menu-item', $item['submenu'], 'item')
+
                 </ul>
             @endif
         </li>

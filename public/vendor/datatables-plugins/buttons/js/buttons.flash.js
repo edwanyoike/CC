@@ -95,7 +95,7 @@ var ZeroClipboard_TableTools = {
 	},
 
 	register: function(id, client) {
-		// register new client to receive events
+		// register new client to receive event
 		this.clients[id] = client;
 	},
 
@@ -133,7 +133,7 @@ var ZeroClipboard_TableTools = {
 		this.id = ZeroClipboard_TableTools.nextId++;
 		this.movieId = 'ZeroClipboard_TableToolsMovie_' + this.id;
 
-		// register client with singleton to receive flash events
+		// register client with singleton to receive flash event
 		ZeroClipboard_TableTools.register(this.id, this);
 
 		// create movie
@@ -146,7 +146,7 @@ var ZeroClipboard_TableTools = {
 ZeroClipboard_TableTools.Client.prototype = {
 
 	id: 0, // unique ID for us
-	ready: false, // whether movie is ready to receive events or not
+	ready: false, // whether movie is ready to receive event or not
 	movie: null, // reference to movie object
 	clipText: '', // text to copy to clipboard
 	fileName: '', // default file save name
@@ -355,7 +355,7 @@ ZeroClipboard_TableTools.Client.prototype = {
 		// receive event from flash
 		eventName = eventName.toString().toLowerCase().replace(/^on/, '');
 
-		// special behavior for certain events
+		// special behavior for certain event
 		switch (eventName) {
 			case 'load':
 				// movie claims it is ready, but in IE this isn't always the case...
@@ -1396,7 +1396,7 @@ DataTable.ext.buttons.excelFlash = $.extend( {}, flashButton, {
 	},
 
 	extension: '.xlsx',
-	
+
 	createEmptyCells: false
 } );
 

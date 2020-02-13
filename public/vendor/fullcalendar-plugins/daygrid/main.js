@@ -228,7 +228,7 @@ Docs & License: https://fullcalendar.io/
             var timeText;
             var titleHtml;
             classes.unshift('fc-day-grid-event', 'fc-h-event');
-            // Only display a timed events time if it is the starting segment
+            // Only display a timed event time if it is the starting segment
             if (seg.isStart) {
                 timeText = this.getTimeText(eventRange);
                 if (timeText) {
@@ -292,7 +292,7 @@ Docs & License: https://fullcalendar.io/
             this.dayGrid.rowEls.forEach(function (rowNode, i) {
                 rowNode.querySelector('.fc-content-skeleton > table').appendChild(rowStructs[i].tbodyEl);
             });
-            // removes the "more.." events popover
+            // removes the "more.." event popover
             if (!mirrorInfo) {
                 this.dayGrid.removeSegPopover();
             }
@@ -306,7 +306,7 @@ Docs & License: https://fullcalendar.io/
             }
             this.rowStructs = null;
         };
-        // Uses the given events array to generate <tbody> elements that should be appended to each row's content skeleton.
+        // Uses the given event array to generate <tbody> elements that should be appended to each row's content skeleton.
         // Returns an array of rowStruct objects (see the bottom of `renderSegRow`).
         // PRECONDITION: each segment shoud already have a rendered and assigned `.el`
         DayGridEventRenderer.prototype.renderSegRows = function (segs) {
@@ -495,7 +495,7 @@ Docs & License: https://fullcalendar.io/
                 }
                 else {
                     skeletonTopEl = rowNode.querySelector('.fc-content-skeleton tbody');
-                    if (!skeletonTopEl) { // when no events
+                    if (!skeletonTopEl) { // when no event
                         skeletonTopEl = rowNode.querySelector('.fc-content-skeleton table');
                     }
                 }
@@ -509,7 +509,7 @@ Docs & License: https://fullcalendar.io/
         return DayGridMirrorRenderer;
     }(DayGridEventRenderer));
 
-    var EMPTY_CELL_HTML = '<td style="pointer-events:none"></td>';
+    var EMPTY_CELL_HTML = '<td style="pointer-event:none"></td>';
     var DayGridFillRenderer = /** @class */ (function (_super) {
         __extends(DayGridFillRenderer, _super);
         function DayGridFillRenderer(dayGrid) {
@@ -519,7 +519,7 @@ Docs & License: https://fullcalendar.io/
             return _this;
         }
         DayGridFillRenderer.prototype.renderSegs = function (type, segs) {
-            // don't render timed background events
+            // don't render timed background event
             if (type === 'bgEvent') {
                 segs = segs.filter(function (seg) {
                     return seg.eventRange.def.allDay;
@@ -562,14 +562,14 @@ Docs & License: https://fullcalendar.io/
                 '</div>');
             trEl = skeletonEl.getElementsByTagName('tr')[0];
             if (startCol > 0) {
-                core.appendToElement(trEl, 
+                core.appendToElement(trEl,
                 // will create (startCol + 1) td's
                 new Array(startCol + 1).join(EMPTY_CELL_HTML));
             }
             seg.el.colSpan = endCol - startCol;
             trEl.appendChild(seg.el);
             if (endCol < colCnt) {
-                core.appendToElement(trEl, 
+                core.appendToElement(trEl,
                 // will create (colCnt - endCol) td's
                 new Array(colCnt - endCol + 1).join(EMPTY_CELL_HTML));
             }
@@ -883,7 +883,7 @@ Docs & License: https://fullcalendar.io/
             var weekCalcFirstDow;
             if (!isDayNumberVisible && !this.renderProps.cellWeekNumbersVisible) {
                 // no numbers in day cell (week number must be along the side)
-                return '<td></td>'; //  will create an empty space above events :(
+                return '<td></td>'; //  will create an empty space above event :(
             }
             classes = core.getDayClasses(date, this.props.dateProfile, this.context);
             classes.unshift('fc-day-top');
@@ -1002,7 +1002,7 @@ Docs & License: https://fullcalendar.io/
                 this.segPopover.hide(); // in handler, will call segPopover's removeElement
             }
         };
-        // Limits the number of "levels" (vertically stacking layers of events) for each row of the grid.
+        // Limits the number of "levels" (vertically stacking layers of event) for each row of the grid.
         // `levelLimit` can be false (don't limit), a number, or true (should be computed).
         DayGrid.prototype.limitRows = function (levelLimit) {
             var rowStructs = this.eventRenderer.rowStructs || [];
@@ -1184,7 +1184,7 @@ Docs & License: https://fullcalendar.io/
             });
             return a;
         };
-        // Reveals the popover that displays all events within a cell
+        // Reveals the popover that displays all event within a cell
         DayGrid.prototype.showSegPopover = function (row, col, moreLink, segs) {
             var _this = this;
             var _a = this, calendar = _a.calendar, view = _a.view, theme = _a.theme;
@@ -1226,7 +1226,7 @@ Docs & License: https://fullcalendar.io/
             this.segPopover.show();
             calendar.releaseAfterSizingTriggers(); // hack for eventPositioned
         };
-        // Given the events within an array of segment objects, reslice them to be in a single day
+        // Given the event within an array of segment objects, reslice them to be in a single day
         DayGrid.prototype.resliceDaySegs = function (segs, dayDate) {
             var dayStart = dayDate;
             var dayEnd = core.addDays(dayStart, 1);
@@ -1248,7 +1248,7 @@ Docs & License: https://fullcalendar.io/
             }
             return newSegs;
         };
-        // Generates the text that should be inside a "more" link, given the number of events it represents
+        // Generates the text that should be inside a "more" link, given the number of event it represents
         DayGrid.prototype.getMoreLinkText = function (num) {
             var opt = this.opt('eventLimitText');
             if (typeof opt === 'function') {
@@ -1259,7 +1259,7 @@ Docs & License: https://fullcalendar.io/
             }
         };
         // Returns segments within a given cell.
-        // If `startLevel` is specified, returns only events including and below that level. Otherwise returns all segs.
+        // If `startLevel` is specified, returns only event including and below that level. Otherwise returns all segs.
         DayGrid.prototype.getCellSegs = function (row, col, startLevel) {
             var segMatrix = this.eventRenderer.rowStructs[row].segMatrix;
             var level = startLevel || 0;

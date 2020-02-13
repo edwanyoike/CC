@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEventsTable extends Migration
+class CreateDepartmentablesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreateEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('event', function (Blueprint $table) {
+        Schema::create('departmentables', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('name');
-            $table->dateTime('event_date');
-            $table->string('venue');
+            $table->integer("department_id");
+            $table->integer("departmentable_id");
+            $table->string("departmentable_type");
 
-            $table->decimal('budget', 8, 2);
-
-            $table->integer('eventable_id')->unsigned();
-            $table->string('eventable_type');
         });
     }
 
@@ -34,6 +30,6 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event');
+        Schema::dropIfExists('departmentables');
     }
 }

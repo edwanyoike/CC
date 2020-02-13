@@ -765,7 +765,7 @@ $.extend( Responsive.prototype, {
 				break;
 			}
 		}
-		
+
 		// Show the columns for that break point
 		var columnsVis = this._columnsVisiblity( breakpoint );
 		this.s.current = columnsVis;
@@ -896,7 +896,7 @@ $.extend( Responsive.prototype, {
 		if ( this.c.details.type === 'inline' ) {
 			$(clonedTable).addClass( 'dtr-inline collapsed' );
 		}
-		
+
 		// It is unsafe to insert elements with the same name into the DOM
 		// multiple times. For example, cloning and inserting a checked radio
 		// clears the chcecked state of the original radio.
@@ -905,7 +905,7 @@ $.extend( Responsive.prototype, {
 		// A position absolute table would take the table out of the flow of
 		// our container element, bypassing the height and width (Scroller)
 		$( clonedTable ).css( 'position', 'relative' )
-		
+
 		var inserted = $('<div/>')
 			.css( {
 				width: 1,
@@ -1071,7 +1071,7 @@ Responsive.display = {
 			if ( ! update ) {
 				// Show a modal
 				var close = function () {
-					modal.remove(); // will tidy events for us
+					modal.remove(); // will tidy event for us
 					$(document).off( 'keypress.dtr' );
 				};
 
@@ -1369,7 +1369,7 @@ $.fn.dataTable.Responsive = Responsive;
 $.fn.DataTable.Responsive = Responsive;
 
 // Attach a listener to the document which listens for DataTables initialisation
-// events so we can automatically initialise
+// event so we can automatically initialise
 $(document).on( 'preInit.dt.dtr', function (e, settings, json) {
 	if ( e.namespace !== 'dt' ) {
 		return;

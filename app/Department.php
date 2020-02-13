@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
 
+    protected $guarded=[];
 
     //many members can join a department
     public function departmentable()

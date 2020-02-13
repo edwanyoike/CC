@@ -413,7 +413,7 @@ $.extend( FixedColumns.prototype , {
 	 * table, so you can pass in nodes from the master table, or the cloned
 	 * tables and get the index position for the data in the main table.
 	 *  @param {node} node TR, TH or TD element to get the information about
-	 *  @returns {int} If nNode is given as a TR, then a single index is 
+	 *  @returns {int} If nNode is given as a TR, then a single index is
 	 *    returned, or if given as a cell, an array of [row index, column index
 	 *    (visible), column index (all)] is given.
 	 */
@@ -1051,7 +1051,7 @@ $.extend( FixedColumns.prototype , {
 	 *  @returns {Array} Copy of the layout array
 	 *  @param   {Object} aoOriginal Layout array from DataTables (aoHeader or aoFooter)
 	 *  @param   {Object} aiColumns Columns to copy
-	 *  @param   {boolean} events Copy cell events or not
+	 *  @param   {boolean} events Copy cell event or not
 	 *  @private
 	 */
 	"_fnCopyLayout": function ( aoOriginal, aiColumns, events )
@@ -1631,7 +1631,7 @@ DataTable.Api.registerPlural( 'cells().fixedNodes()', 'cell().fixedNode()', func
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 // Attach a listener to the document which listens for DataTables initialisation
-// events so we can automatically initialise
+// event so we can automatically initialise
 $(document).on( 'init.dt.fixedColumns', function (e, settings) {
 	if ( e.namespace !== 'dt' ) {
 		return;

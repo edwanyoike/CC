@@ -2592,9 +2592,9 @@ var handlePopupClick = function handlePopupClick(domCache, innerParams, dismissW
   if (innerParams.toast) {
     handleToastClick(domCache, innerParams, dismissWith);
   } else {
-    // Ignore click events that had mousedown on the popup but mouseup on the container
+    // Ignore click event that had mousedown on the popup but mouseup on the container
     // This can happen when the user drags a slider
-    handleModalMousedown(domCache); // Ignore click events that had mousedown on the container but mouseup on the popup
+    handleModalMousedown(domCache); // Ignore click event that had mousedown on the container but mouseup on the popup
 
     handleContainerMousedown(domCache);
     handleModalClick(domCache, innerParams, dismissWith);

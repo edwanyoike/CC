@@ -3318,7 +3318,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      - mcontext (object) #optional context for moving handler
      - scontext (object) #optional context for drag start handler
      - econtext (object) #optional context for drag end handler
-     * Additionally following `drag` events will be triggered: `drag.start.<id>` on start,
+     * Additionally following `drag` event will be triggered: `drag.start.<id>` on start,
      * `drag.end.<id>` on end and `drag.move.<id>` on every move. When element will be dragged over another element
      * `drag.over.<id>` will be fired as well.
      *
@@ -4811,7 +4811,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      - value (number) number of milliseconds from the beginning of the animation
      **
      = (object) original element if `value` is specified
-     * Note, that during animation following events are triggered:
+     * Note, that during animation following event are triggered:
      *
      * On each animation frame event `anim.frame.<id>`, on start `anim.start.<id>` and on end `anim.finish.<id>`.
     \*/
@@ -6213,8 +6213,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
          * Element.id
          [ property (number) ]
          **
-         * Unique id of the element. Especially useful when you want to listen to events of the element,
-         * because all events are fired in format `<module>.<action>.<id>`. Also useful for @Paper.getById method.
+         * Unique id of the element. Especially useful when you want to listen to event of the element,
+         * because all event are fired in format `<module>.<action>.<id>`. Also useful for @Paper.getById method.
         \*/
         this.id = guid();
         node.raphaelid = this.id;

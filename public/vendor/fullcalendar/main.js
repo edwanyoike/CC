@@ -1206,7 +1206,7 @@ Docs & License: https://fullcalendar.io/
             start: dateEnv.subtract(framingRange.start, duration),
             end: framingRange.end
         }, dateEnv);
-        // the recurrence plugins don't guarantee that all-day events are start-of-day, so we have to
+        // the recurrence plugins don't guarantee that all-day event are start-of-day, so we have to
         if (eventDef.allDay) {
             markers = markers.map(startOfDay);
         }
@@ -1353,14 +1353,14 @@ Docs & License: https://fullcalendar.io/
         }
         return { defs: defs, instances: instances };
     }
-    // retrieves events that have the same groupId as the instance specified by `instanceId`
+    // retrieves event that have the same groupId as the instance specified by `instanceId`
     // or they are the same as the instance.
     // why might instanceId not be in the store? an event from another calendar?
     function getRelevantEvents(eventStore, instanceId) {
         var instance = eventStore.instances[instanceId];
         if (instance) {
             var def_1 = eventStore.defs[instance.defId];
-            // get events/instances with same group
+            // get event/instances with same group
             var newStore = filterEventStoreDefs(eventStore, function (lookDef) {
                 return isEventDefsGrouped(def_1, lookDef);
             });
@@ -2564,7 +2564,7 @@ Docs & License: https://fullcalendar.io/
                 return excludeEventsBySourceId(eventStore, action.sourceId);
             case 'REMOVE_ALL_EVENT_SOURCES':
                 return filterEventStoreDefs(eventStore, function (eventDef) {
-                    return !eventDef.sourceId; // only keep events with no source id
+                    return !eventDef.sourceId; // only keep event with no source id
                 });
             case 'REMOVE_ALL_EVENTS':
                 return createEmptyEventStore();
@@ -2681,7 +2681,7 @@ Docs & License: https://fullcalendar.io/
         if (filterConfig) {
             subjectConfigs = mapHash(subjectConfigs, filterConfig);
         }
-        var otherEventStore = excludeInstances(state.eventStore, interaction.affectedEvents.instances); // exclude the subject events. TODO: exclude defs too?
+        var otherEventStore = excludeInstances(state.eventStore, interaction.affectedEvents.instances); // exclude the subject event. TODO: exclude defs too?
         var otherDefs = otherEventStore.defs;
         var otherInstances = otherEventStore.instances;
         var otherConfigs = compileEventUis(otherDefs, state.eventUiBases);
@@ -3296,7 +3296,7 @@ Docs & License: https://fullcalendar.io/
         Splitter.prototype._splitInteraction = function (interaction) {
             var splitStates = {};
             if (interaction) {
-                var affectedStores_1 = this._splitEventStore(interaction.affectedEvents, this._getKeysForEventDefs(interaction.affectedEvents) // can't use cached. might be events from other calendar
+                var affectedStores_1 = this._splitEventStore(interaction.affectedEvents, this._getKeysForEventDefs(interaction.affectedEvents) // can't use cached. might be event from other calendar
                 );
                 // can't rely on defKeys because event data is mutated
                 var mutatedKeysByDefId = this._getKeysForEventDefs(interaction.mutatedEvents);
@@ -3940,17 +3940,17 @@ Docs & License: https://fullcalendar.io/
         };
         // TODO: WHAT ABOUT (sourceSeg && sourceSeg.component.doesDragMirror)
         //
-        // Event Drag-n-Drop Rendering (for both events and external elements)
+        // Event Drag-n-Drop Rendering (for both event and external elements)
         // ---------------------------------------------------------------------------------------------------------------
         /*
         renderEventDragSegs(state: EventSegUiInteractionState) {
           if (state) {
             let { isEvent, segs, sourceSeg } = state
-      
+
             if (this.eventRenderer) {
               this.eventRenderer.hideByHash(state.affectedInstances)
             }
-      
+
             // if the user is dragging something that is considered an event with real event data,
             // and this component likes to do drag mirrors OR the component where the seg came from
             // likes to do drag mirrors, then render a drag mirror.
@@ -3959,7 +3959,7 @@ Docs & License: https://fullcalendar.io/
                 this.mirrorRenderer.renderSegs(segs, { isDragging: true, sourceSeg })
               }
             }
-      
+
             // if it would be impossible to render a drag mirror OR this component likes to render
             // highlights, then render a highlight.
             if (!isEvent || this.doesDragHighlight) {
@@ -4406,7 +4406,7 @@ Docs & License: https://fullcalendar.io/
         var endMarker = framingRange.end;
         var instanceStarts = [];
         while (dayMarker < endMarker) {
-            var instanceStart 
+            var instanceStart
             // if everyday, or this particular day-of-week
             = void 0;
             // if everyday, or this particular day-of-week
@@ -4505,7 +4505,7 @@ Docs & License: https://fullcalendar.io/
         locale: '',
         // dir: will get this from the default locale
         // buttonIcons: null,
-        // allows setting a min-height to the event segment to prevent short events overlapping each other
+        // allows setting a min-height to the event segment to prevent short event overlapping each other
         timeGridEventMinHeight: 0,
         themeSystem: 'standard',
         // eventResizableFromStart: false,
@@ -4517,7 +4517,7 @@ Docs & License: https://fullcalendar.io/
         // selectMinDistance: 0,
         dropAccept: '*',
         eventOrder: 'start,-duration,allDay,title',
-        // ^ if start tie, longer events go before shorter. final tie-breaker is title text
+        // ^ if start tie, longer event go before shorter. final tie-breaker is title text
         // rerenderDelay: null,
         eventLimit: false,
         eventLimitClick: 'popover',
@@ -4601,7 +4601,7 @@ Docs & License: https://fullcalendar.io/
         weekLabel: 'W',
         allDayText: 'all-day',
         eventLimitText: 'more',
-        noEventsMessage: 'No events to display'
+        noEventsMessage: 'No event to display'
     };
     function parseRawLocales(explicitRawLocales) {
         var defaultCode = explicitRawLocales.length > 0 ? explicitRawLocales[0].code : 'en';
@@ -5314,7 +5314,7 @@ Docs & License: https://fullcalendar.io/
             // or if the range is completely outside of the valid range.
             isValid = rangesIntersect(currentInfo.range, validRange);
             return {
-                // constraint for where prev/next operations can go and where events can be dragged/resized to.
+                // constraint for where prev/next operations can go and where event can be dragged/resized to.
                 // an object with optional start and end properties.
                 validRange: validRange,
                 // range the view is formally responsible for.
@@ -5323,8 +5323,8 @@ Docs & License: https://fullcalendar.io/
                 // name of largest unit being displayed, like "month" or "week"
                 currentRangeUnit: currentInfo.unit,
                 isRangeAllDay: isRangeAllDay,
-                // dates that display events and accept drag-n-drop
-                // will be `null` if no dates accept events
+                // dates that display event and accept drag-n-drop
+                // will be `null` if no dates accept event
                 activeRange: activeRange,
                 // date range with a rendered skeleton
                 // includes not-active days that need some sort of DOM
@@ -6448,7 +6448,7 @@ Docs & License: https://fullcalendar.io/
     }(Interaction));
 
     /*
-    Triggers events and adds/removes core classNames when the user's pointer
+    Triggers event and adds/removes core classNames when the user's pointer
     enters/leaves event-elements of a component.
     */
     var EventHovering = /** @class */ (function (_super) {
@@ -6790,7 +6790,7 @@ Docs & License: https://fullcalendar.io/
                 throw new Error("View type \"" + viewType + "\" is not valid");
             }
             // if event sources are still loading and progressive rendering hasn't been enabled,
-            // keep rendering the last fully loaded set of events
+            // keep rendering the last fully loaded set of event
             var renderableEventStore = this.renderableEventStore =
                 (state.eventSourceLoadingLevel && !this.opt('progressiveEventRendering')) ?
                     this.renderableEventStore :
@@ -6953,7 +6953,7 @@ Docs & License: https://fullcalendar.io/
             return processScopedUiProps('select', rawOpts, this);
         };
         Calendar.prototype._buildEventUiSingleBase = function (rawOpts) {
-            if (rawOpts.editable) { // so 'editable' affected events
+            if (rawOpts.editable) { // so 'editable' affected event
                 rawOpts = __assign({}, rawOpts, { eventEditable: true });
             }
             return processScopedUiProps('event', rawOpts, this);
@@ -7968,7 +7968,7 @@ Docs & License: https://fullcalendar.io/
     function buildSegCompareObj(seg) {
         var eventDef = seg.eventRange.def;
         var range = seg.eventRange.instance.range;
-        var start = range.start ? range.start.valueOf() : 0; // TODO: better support for open-range events
+        var start = range.start ? range.start.valueOf() : 0; // TODO: better support for open-range event
         var end = range.end ? range.end.valueOf() : 0; // "
         return __assign({}, eventDef.extendedProps, eventDef, { id: eventDef.publicId, start: start,
             end: end, duration: end - start, allDay: Number(eventDef.allDay), _seg: seg // for later retrieval
@@ -8029,7 +8029,7 @@ Docs & License: https://fullcalendar.io/
                     }
                 });
                 if (type === 'bgEvent') {
-                    segs = filterSegsViaEls(this.context.view, segs, false // isMirror. background events can never be mirror elements
+                    segs = filterSegsViaEls(this.context.view, segs, false // isMirror. background event can never be mirror elements
                     );
                 }
                 // correct element type? (would be bad if a non-TD were inserted into a table for example)

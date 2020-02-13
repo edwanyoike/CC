@@ -3318,7 +3318,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      - mcontext (object) #optional context for moving handler
      - scontext (object) #optional context for drag start handler
      - econtext (object) #optional context for drag end handler
-     * Additionally following `drag` events will be triggered: `drag.start.<id>` on start,
+     * Additionally following `drag` event will be triggered: `drag.start.<id>` on start,
      * `drag.end.<id>` on end and `drag.move.<id>` on every move. When element will be dragged over another element
      * `drag.over.<id>` will be fired as well.
      *
@@ -4811,7 +4811,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      - value (number) number of milliseconds from the beginning of the animation
      **
      = (object) original element if `value` is specified
-     * Note, that during animation following events are triggered:
+     * Note, that during animation following event are triggered:
      *
      * On each animation frame event `anim.frame.<id>`, on start `anim.start.<id>` and on end `anim.finish.<id>`.
     \*/
@@ -6213,8 +6213,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
          * Element.id
          [ property (number) ]
          **
-         * Unique id of the element. Especially useful when you want to listen to events of the element,
-         * because all events are fired in format `<module>.<action>.<id>`. Also useful for @Paper.getById method.
+         * Unique id of the element. Especially useful when you want to listen to event of the element,
+         * because all event are fired in format `<module>.<action>.<id>`. Also useful for @Paper.getById method.
         \*/
         this.id = guid();
         node.raphaelid = this.id;
@@ -8004,13 +8004,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 // http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -8210,7 +8210,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c)
      - name (array) if you don’t want to use separators, you can use array of strings
      - f (function) event handler function
      **
-     = (function) returned function accepts a single numeric parameter that represents z-index of the handler. It is an optional feature and only used when you need to ensure that some subset of handlers will be invoked in a given order, despite of the order of assignment. 
+     = (function) returned function accepts a single numeric parameter that represents z-index of the handler. It is an optional feature and only used when you need to ensure that some subset of handlers will be invoked in a given order, despite of the order of assignment.
      > Example:
      | eve.on("mouse", eatIt)(2);
      | eve.on("mouse", scream);
@@ -8317,7 +8317,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c)
      [ method ]
      **
      * Removes given function from the list of event listeners assigned to given name.
-     * If no arguments specified all the events will be cleared.
+     * If no arguments specified all the event will be cleared.
      **
      > Arguments
      **

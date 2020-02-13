@@ -1532,7 +1532,7 @@ function getAlpha(string) {
 // generators
 function hexString(rgba, a) {
    var a = (a !== undefined && rgba.length === 3) ? a : rgba[3];
-   return "#" + hexDouble(rgba[0]) 
+   return "#" + hexDouble(rgba[0])
               + hexDouble(rgba[1])
               + hexDouble(rgba[2])
               + (
@@ -3487,8 +3487,8 @@ var core_animations = {
 		var me = this;
 		if (me.request === null) {
 			// Skip animation frame requests until the active one is executed.
-			// This can happen when processing mouse events, e.g. 'mousemove'
-			// and 'mouseout' events will trigger multiple renders.
+			// This can happen when processing mouse event, e.g. 'mousemove'
+			// and 'mouseout' event will trigger multiple renders.
 			me.request = helpers$1.requestAnimFrame.call(window, function() {
 				me.request = null;
 				me.startDigest();
@@ -7390,7 +7390,7 @@ var platform_basic = {
 	}
 };
 
-var platform_dom = "/*\n * DOM element rendering detection\n * https://davidwalsh.name/detect-node-insertion\n */\n@keyframes chartjs-render-animation {\n\tfrom { opacity: 0.99; }\n\tto { opacity: 1; }\n}\n\n.chartjs-render-monitor {\n\tanimation: chartjs-render-animation 0.001s;\n}\n\n/*\n * DOM element resizing detection\n * https://github.com/marcj/css-element-queries\n */\n.chartjs-size-monitor,\n.chartjs-size-monitor-expand,\n.chartjs-size-monitor-shrink {\n\tposition: absolute;\n\tdirection: ltr;\n\tleft: 0;\n\ttop: 0;\n\tright: 0;\n\tbottom: 0;\n\toverflow: hidden;\n\tpointer-events: none;\n\tvisibility: hidden;\n\tz-index: -1;\n}\n\n.chartjs-size-monitor-expand > div {\n\tposition: absolute;\n\twidth: 1000000px;\n\theight: 1000000px;\n\tleft: 0;\n\ttop: 0;\n}\n\n.chartjs-size-monitor-shrink > div {\n\tposition: absolute;\n\twidth: 200%;\n\theight: 200%;\n\tleft: 0;\n\ttop: 0;\n}\n";
+var platform_dom = "/*\n * DOM element rendering detection\n * https://davidwalsh.name/detect-node-insertion\n */\n@keyframes chartjs-render-animation {\n\tfrom { opacity: 0.99; }\n\tto { opacity: 1; }\n}\n\n.chartjs-render-monitor {\n\tanimation: chartjs-render-animation 0.001s;\n}\n\n/*\n * DOM element resizing detection\n * https://github.com/marcj/css-element-queries\n */\n.chartjs-size-monitor,\n.chartjs-size-monitor-expand,\n.chartjs-size-monitor-shrink {\n\tposition: absolute;\n\tdirection: ltr;\n\tleft: 0;\n\ttop: 0;\n\tright: 0;\n\tbottom: 0;\n\toverflow: hidden;\n\tpointer-event: none;\n\tvisibility: hidden;\n\tz-index: -1;\n}\n\n.chartjs-size-monitor-expand > div {\n\tposition: absolute;\n\twidth: 1000000px;\n\theight: 1000000px;\n\tleft: 0;\n\ttop: 0;\n}\n\n.chartjs-size-monitor-shrink > div {\n\tposition: absolute;\n\twidth: 200%;\n\theight: 200%;\n\tleft: 0;\n\ttop: 0;\n}\n";
 
 var platform_dom$1 = /*#__PURE__*/Object.freeze({
 __proto__: null,
@@ -7408,7 +7408,7 @@ var ANIMATION_START_EVENTS = ['animationstart', 'webkitAnimationStart'];
 
 /**
  * DOM event types -> Chart.js event types.
- * Note: only events with different types are mapped.
+ * Note: only event with different types are mapped.
  * @see https://developer.mozilla.org/en-US/docs/Web/Events
  */
 var EVENT_TYPES = {
@@ -7514,7 +7514,7 @@ var supportsEventListenerOptions = (function() {
 	return supports;
 }());
 
-// Default passive to true as expected by Chrome for 'touchstart' and 'touchend' events.
+// Default passive to true as expected by Chrome for 'touchstart' and 'touchend' event.
 // https://github.com/chartjs/Chart.js/issues/4287
 var eventListenerOptions = supportsEventListenerOptions ? {passive: true} : false;
 
@@ -7651,7 +7651,7 @@ function addResizeListener(node, listener, chart) {
 				// scrollbar appeared. So we resize again with the scrollbar visible -
 				// effectively making chart smaller and the scrollbar hidden again.
 				// Because we are inside `throttled`, and currently `ticking`, scroll
-				// events are ignored during this whole 2 resize process.
+				// event are ignored during this whole 2 resize process.
 				// If we assumed wrong and something else happened, we are resizing
 				// twice in a frame (potential performance issue)
 				listener(createEvent('resize', chart));

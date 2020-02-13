@@ -576,7 +576,7 @@ $.extend( ColReorder.prototype, {
 	 *//**
 	 * Set the order of the columns, from the positions identified in the
 	 * ordering array given. Note that ColReorder takes a brute force approach
-	 * to reordering, so it is possible multiple reordering events will occur
+	 * to reordering, so it is possible multiple reordering event will occur
 	 * before the final order is settled upon.
 	 *  @param {array} [set] Array of column identifiers in the new order. Note
 	 *    that every column must be included, uniquely, in this array.
@@ -1418,7 +1418,7 @@ else {
 
 
 // Attach a listener to the document which listens for DataTables initialisation
-// events so we can automatically initialise
+// event so we can automatically initialise
 $(document).on( 'preInit.dt.colReorder', function (e, settings) {
 	if ( e.namespace !== 'dt' ) {
 		return;

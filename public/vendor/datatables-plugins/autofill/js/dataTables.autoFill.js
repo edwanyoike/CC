@@ -52,7 +52,7 @@ var DataTable = $.fn.dataTable;
 
 var _instance = 0;
 
-/** 
+/**
  * AutoFill provides Excel like auto-fill features for a DataTable
  *
  * @class AutoFill
@@ -80,7 +80,7 @@ var AutoFill = function( dt, opts )
 		/** @type {DataTable.Api} DataTables' API instance */
 		dt: new DataTable.Api( dt ),
 
-		/** @type {String} Unique namespace for events attached to the document */
+		/** @type {String} Unique namespace for event attached to the document */
 		namespace: '.autoFill'+(_instance++),
 
 		/** @type {Object} Cached dimension information for use in the mouse move event handler */
@@ -681,7 +681,7 @@ $.extend( AutoFill.prototype, {
 	 * @private
 	 */
 	_mousemove: function ( e )
-	{	
+	{
 		var that = this;
 		var dt = this.s.dt;
 		var name = e.target.nodeName.toLowerCase();
@@ -787,7 +787,7 @@ $.extend( AutoFill.prototype, {
 		}
 
 		this._actionSelector( selected );
-		
+
 		// Stop shiftScroll
 		clearInterval( this.s.scrollInterval );
 		this.s.scrollInterval = null;
@@ -797,7 +797,7 @@ $.extend( AutoFill.prototype, {
 	/**
 	 * Create an array with a range of numbers defined by the start and end
 	 * parameters passed in (inclusive!).
-	 * 
+	 *
 	 * @param  {integer} start Start
 	 * @param  {integer} end   End
 	 * @private
@@ -1098,7 +1098,7 @@ AutoFill.actions = {
 
 /**
  * AutoFill version
- * 
+ *
  * @static
  * @type      String
  */
@@ -1107,7 +1107,7 @@ AutoFill.version = '2.3.4';
 
 /**
  * AutoFill defaults
- * 
+ *
  * @namespace
  */
 AutoFill.defaults = {
@@ -1139,7 +1139,7 @@ AutoFill.defaults = {
 
 /**
  * Classes used by AutoFill that are configurable
- * 
+ *
  * @namespace
  */
 AutoFill.classes = {
@@ -1184,7 +1184,7 @@ Api.register( 'autoFill().disable()', function () {
 
 
 // Attach a listener to the document which listens for DataTables initialisation
-// events so we can automatically initialise
+// event so we can automatically initialise
 $(document).on( 'preInit.dt.autofill', function (e, settings, json) {
 	if ( e.namespace !== 'dt' ) {
 		return;

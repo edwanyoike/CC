@@ -194,7 +194,7 @@ $.extend( KeyTable.prototype, {
 			that._focus( cell, null, false, e );
 		} );
 
-		// Key events
+		// Key event
 		$( document ).on( 'keydown'+namespace, function (e) {
 			if ( ! editorBlock ) {
 				that._key( e );
@@ -275,7 +275,7 @@ $.extend( KeyTable.prototype, {
 				that._editor( null, e, true );
 			} );
 
-			// While Editor is busy processing, we don't want to process any key events
+			// While Editor is busy processing, we don't want to process any key event
 			editor
 				.on('preSubmit', function () {
 					editorBlock = true;
@@ -372,7 +372,7 @@ $.extend( KeyTable.prototype, {
 	/**
 	 * Blur the control
 	 *
-	 * @param {boolean} [noEvents=false] Don't trigger updates / events (for destroying)
+	 * @param {boolean} [noEvents=false] Don't trigger updates / event (for destroying)
 	 * @private
 	 */
 	_blur: function (noEvents)
@@ -649,7 +649,7 @@ $.extend( KeyTable.prototype, {
 				.rows( { filter: 'applied', order: 'applied' } )
 				.indexes()
 				.indexOf( index.row );
-			
+
 			// Don't focus rows that were filtered out.
 			if ( row < 0 ) {
 				return;
@@ -1221,7 +1221,7 @@ DataTable.ext.selector.cell.push( function ( settings, opts, cells ) {
 
 
 // Attach a listener to the document which listens for DataTables initialisation
-// events so we can automatically initialise
+// event so we can automatically initialise
 $(document).on( 'preInit.dt.dtk', function (e, settings, json) {
 	if ( e.namespace !== 'dt' ) {
 		return;

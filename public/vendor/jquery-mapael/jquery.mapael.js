@@ -259,9 +259,9 @@
                 self.onShowElementsInRange(e, opt);
             });
 
-            // Attach delegated events
+            // Attach delegated event
             self.initDelegatedMapEvents();
-            // Attach delegated custom events
+            // Attach delegated custom event
             self.initDelegatedCustomEvents();
 
             // Hook that allows to add custom processing on the map
@@ -388,7 +388,7 @@
         },
 
         /*
-         * Init all delegated events for the whole map:
+         * Init all delegated event for the whole map:
          *  mouseover
          *  mousemove
          *  mouseout
@@ -492,14 +492,14 @@
         },
 
         /*
-         * Init all delegated custom events
+         * Init all delegated custom event
          */
         initDelegatedCustomEvents: function() {
             var self = this;
 
             $.each(self.customEventHandlers, function(eventName) {
                 // Namespace the custom event
-                // This allow to easily unbound only custom events and not regular ones
+                // This allow to easily unbound only custom event and not regular ones
                 var fullEventName = eventName + '.' + pluginName + ".custom";
                 self.$container.off(fullEventName).on(fullEventName, "[data-id]", function (e) {
                     var $elem = $(this);
@@ -521,7 +521,7 @@
         },
 
         /*
-         * Init the element "elem" on the map (drawing text, setting attributes, events, tooltip, ...)
+         * Init the element "elem" on the map (drawing text, setting attributes, event, tooltip, ...)
          *
          * @param id the id of the element
          * @param type the type of the element (area, plot, link)
@@ -1326,7 +1326,7 @@
                 });
             }
 
-            // Always rebind custom events on update
+            // Always rebind custom event on update
             self.initDelegatedCustomEvents();
 
             if (opt.afterUpdate) opt.afterUpdate(self.$container, self.paper, self.areas, self.plots, self.options, self.links);
@@ -1651,7 +1651,7 @@
         },
 
         /*
-         * Set user defined handlers for events on areas and plots
+         * Set user defined handlers for event on areas and plots
          * @param id the id of the element
          * @param type the type of the element (area, plot, link)
          * @param elem the element object {mapElem, textElem, options, ...}

@@ -2363,7 +2363,7 @@ GenericWorker.prototype = {
     },
     /**
      * Chain a worker with an other.
-     * @param {Worker} next the worker receiving events from the current one.
+     * @param {Worker} next the worker receiving event from the current one.
      * @return {worker} the next worker for chainability
      */
     pipe : function (next) {
@@ -2374,7 +2374,7 @@ GenericWorker.prototype = {
      * Using an API with `pipe(next)` is very easy.
      * Implementing the API with the point of view of the next one registering
      * a source is easier, see the ZipFileWorker.
-     * @param {Worker} previous the previous worker, sending events to this one
+     * @param {Worker} previous the previous worker, sending event to this one
      * @return {Worker} the current worker for chainability
      */
     registerPrevious : function (previous) {
@@ -2400,7 +2400,7 @@ GenericWorker.prototype = {
         return this;
     },
     /**
-     * Pause the stream so it doesn't send events anymore.
+     * Pause the stream so it doesn't send event anymore.
      * @return {Boolean} true if this call paused the worker, false otherwise.
      */
     pause : function () {
@@ -3459,8 +3459,8 @@ exports.prepareContent = function(name, inputData, isBinary, isOptimizedBinarySt
 
     // if inputData is already a promise, this flatten it.
     var promise = external.Promise.resolve(inputData).then(function(data) {
-        
-        
+
+
         var isBlob = support.blob && (data instanceof Blob || ['[object File]', '[object Blob]'].indexOf(Object.prototype.toString.call(data)) !== -1);
 
         if (isBlob && typeof FileReader !== "undefined") {
@@ -5766,7 +5766,7 @@ module.exports = {
   Z_TREES:            6,
 
   /* Return codes for the compression/decompression functions. Negative values
-  * are errors, positive values are used for special but normal events.
+  * are errors, positive values are used for special but normal event.
   */
   Z_OK:               0,
   Z_STREAM_END:       1,
@@ -5906,7 +5906,7 @@ var Z_BLOCK         = 5;
 
 
 /* Return codes for the compression/decompression functions. Negative values
- * are errors, positive values are used for special but normal events.
+ * are errors, positive values are used for special but normal event.
  */
 var Z_OK            = 0;
 var Z_STREAM_END    = 1;
@@ -8193,7 +8193,7 @@ var Z_TREES         = 6;
 
 
 /* Return codes for the compression/decompression functions. Negative values
- * are errors, positive values are used for special but normal events.
+ * are errors, positive values are used for special but normal event.
  */
 var Z_OK            = 0;
 var Z_STREAM_END    = 1;

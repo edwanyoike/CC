@@ -4,7 +4,7 @@
 
 /**
  * @summary     Select for DataTables
- * @description A collection of API methods, events and buttons for DataTables
+ * @description A collection of API methods, event and buttons for DataTables
  *   that provides selection options of the items in a DataTable
  * @version     1.3.1
  * @file        dataTables.select.js
@@ -89,7 +89,7 @@ DataTable.select.init = function ( dt ) {
 		if ( opts.blurable !== undefined ) {
 			blurable = opts.blurable;
 		}
-		
+
 		if ( opts.toggleable !== undefined ) {
 			toggleable = opts.toggleable;
 		}
@@ -171,7 +171,7 @@ been created for rows / cells (DataTables' defer rendering feature).
 ## API methods
 
 A range of API methods are available for triggering selection and de-selection
-of rows. Methods are also available to configure the selection events that can
+of rows. Methods are also available to configure the selection event that can
 be triggered by an end user (such as which items are to be selected). To a large
 extent, these of API methods *is* Select. It is basically a collection of helper
 functions that can be used to select items in a DataTable.
@@ -186,7 +186,7 @@ The `_select` object contains the following properties:
 
 ```
 {
-	items:string       - Can be `rows`, `columns` or `cells`. Defines what item 
+	items:string       - Can be `rows`, `columns` or `cells`. Defines what item
 	                     will be selected if the user is allowed to activate row
 	                     selection using the mouse.
 	style:string       - Can be `none`, `single`, `multi` or `os`. Defines the
@@ -225,7 +225,7 @@ handler that will select the items using the API methods.
  * in the visible grid rather than by index in sequence. For example, if you
  * click first in cell 1-1 and then shift click in 2-2 - cells 1-2 and 2-1
  * should also be selected (and not 1-3, 1-4. etc)
- * 
+ *
  * @param  {DataTable.Api} dt   DataTable
  * @param  {object}        idx  Cell index to select to
  * @param  {object}        last Cell index to select from
@@ -242,13 +242,13 @@ function cellRange( dt, idx, last )
 			end = start;
 			start = tmp;
 		}
-		
+
 		var record = false;
 		return dt.columns( ':visible' ).indexes().filter( function (i) {
 			if ( i === start ) {
 				record = true;
 			}
-			
+
 			if ( i === end ) { // not else if, as start might === end
 				record = false;
 				return true;
@@ -273,7 +273,7 @@ function cellRange( dt, idx, last )
 			if ( i === start ) {
 				record = true;
 			}
-			
+
 			if ( i === end ) {
 				record = false;
 				return true;
@@ -309,7 +309,7 @@ function cellRange( dt, idx, last )
 /**
  * Disable mouse selection by removing the selectors
  *
- * @param {DataTable.Api} dt DataTable to remove events from
+ * @param {DataTable.Api} dt DataTable to remove event from
  * @private
  */
 function disableMouseSelection( dt )
@@ -328,7 +328,7 @@ function disableMouseSelection( dt )
 /**
  * Attach mouse listeners to the table to allow mouse selection of items
  *
- * @param {DataTable.Api} dt DataTable to remove events from
+ * @param {DataTable.Api} dt DataTable to remove event from
  * @private
  */
 function enableMouseSelection ( dt )
@@ -444,7 +444,7 @@ function enableMouseSelection ( dt )
 /**
  * Trigger an event on a DataTable
  *
- * @param {DataTable.Api} api      DataTable to trigger events on
+ * @param {DataTable.Api} api      DataTable to trigger event on
  * @param  {boolean}      selected true if selected, false if deselected
  * @param  {string}       type     Item type acting on
  * @param  {boolean}      any      Require that there are values before
@@ -469,7 +469,7 @@ function eventTrigger ( api, type, args, any )
 /**
  * Update the information element of the DataTable showing information about the
  * items selected. This is done by adding tags to the existing text
- * 
+ *
  * @param {DataTable.Api} api DataTable to update
  * @private
  */
@@ -533,9 +533,9 @@ function init ( ctx ) {
 	// Row callback so that classes can be added to rows and cells if the item
 	// was selected before the element was created. This will happen with the
 	// `deferRender` option enabled.
-	// 
+	//
 	// This method of attaching to `aoRowCreatedCallback` is a hack until
-	// DataTables has proper events for row manipulation If you are reviewing
+	// DataTables has proper event for row manipulation If you are reviewing
 	// this code to create your own plug-ins, please do not do this!
 	ctx.aoRowCreatedCallback.push( {
 		fn: function ( row, data, index ) {
@@ -658,7 +658,7 @@ function clear( ctx, force )
 {
 	if ( force || ctx._select.style === 'single' ) {
 		var api = new DataTable.Api( ctx );
-		
+
 		api.rows( { selected: true } ).deselect();
 		api.columns( { selected: true } ).deselect();
 		api.cells( { selected: true } ).deselect();
@@ -680,7 +680,7 @@ function typeSelect ( e, dt, ctx, type, idx )
 	var style = dt.select.style();
 	var toggleable = dt.select.toggleable();
 	var isSelected = dt[type]( idx, { selected: true } ).any();
-	
+
 	if ( isSelected && ! toggleable ) {
 		return;
 	}
@@ -876,7 +876,7 @@ apiRegister( 'select.style()', function ( style ) {
 		// API selection is available
 		var dt = new DataTable.Api( ctx );
 		disableMouseSelection( dt );
-		
+
 		if ( style !== 'api' ) {
 			enableMouseSelection( dt );
 		}
@@ -1063,7 +1063,7 @@ function i18n( label, def ) {
 	};
 }
 
-// Common events with suitable namespaces
+// Common event with suitable namespaces
 function namespacedEvents ( config ) {
 	var unique = config._eventNamespace;
 
@@ -1192,7 +1192,7 @@ $.each( [ 'Row', 'Column', 'Cell' ], function ( i, item ) {
 // DataTables creation - check if select has been defined in the options. Note
 // this required that the table be in the document! If it isn't then something
 // needs to trigger this method unfortunately. The next major release of
-// DataTables will rework the events and address this.
+// DataTables will rework the event and address this.
 $(document).on( 'preInit.dt.dtSelect', function (e, ctx) {
 	if ( e.namespace !== 'dt' ) {
 		return;

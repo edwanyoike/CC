@@ -295,7 +295,7 @@ Docs & License: https://fullcalendar.io/
             props.left = left * 100 + '%';
             props.right = right * 100 + '%';
             if (shouldOverlap && seg.forwardPressure) {
-                // add padding to the edge so that forward stacked events don't cover the resizer's icon
+                // add padding to the edge so that forward stacked event don't cover the resizer's icon
                 props[isRtl ? 'marginLeft' : 'marginRight'] = 10 * 2; // 10 is a guesstimate of the icon's width
             }
             return props;
@@ -1119,7 +1119,7 @@ Docs & License: https://fullcalendar.io/
             this.timeGrid.bottomRuleEl.style.display = 'none'; // will be shown later if this <hr> is necessary
             this.scroller.clear(); // sets height to 'auto' and clears overflow
             noScrollRowEls.forEach(core.uncompensateScroll);
-            // limit number of events in the all-day area
+            // limit number of event in the all-day area
             if (this.dayGrid) {
                 this.dayGrid.removeSegPopover(); // kill the "more" popover if displayed
                 eventLimit = this.opt('eventLimit');

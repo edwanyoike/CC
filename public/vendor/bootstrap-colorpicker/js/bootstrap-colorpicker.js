@@ -1197,7 +1197,7 @@ exports.default = {
     fallbackPlacement: 'flip'
   },
   /**
-   * If true, loads the 'debugger' extension automatically, which logs the events in the console
+   * If true, loads the 'debugger' extension automatically, which logs the event in the console
    * @type {boolean}
    * @default false
    */
@@ -2991,7 +2991,7 @@ var Colorpicker = function () {
       this.element.removeClass('colorpicker-element').removeData('colorpicker', 'color').off('.colorpicker');
 
       /**
-       * (Colorpicker) When the instance is destroyed with all events unbound.
+       * (Colorpicker) When the instance is destroyed with all event unbound.
        *
        * @event Colorpicker#colorpickerDestroy
        */
@@ -3667,7 +3667,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * Class that handles all configured sliders on mouse or touch events.
+ * Class that handles all configured sliders on mouse or touch event.
  * @ignore
  */
 var SliderHandler = function () {
@@ -3742,7 +3742,7 @@ var SliderHandler = function () {
     }
 
     /**
-     * Binds the colorpicker sliders to the mouse/touch events
+     * Binds the colorpicker sliders to the mouse/touch event
      */
 
   }, {
@@ -4000,7 +4000,7 @@ var PopupHandler = function () {
 
 
     /**
-     * Binds the different colorpicker elements to the focus/mouse/touch events so it reacts in order to show or
+     * Binds the different colorpicker elements to the focus/mouse/touch event so it reacts in order to show or
      * hide the colorpicker popup accordingly. It also adds the proper classes.
      */
     value: function bind() {
@@ -4008,7 +4008,7 @@ var PopupHandler = function () {
 
       if (cp.options.inline) {
         cp.picker.addClass('colorpicker-inline colorpicker-visible');
-        return; // no need to bind show/hide events for inline elements
+        return; // no need to bind show/hide event for inline elements
       }
 
       cp.picker.addClass('colorpicker-popup colorpicker-hidden');
@@ -4023,7 +4023,7 @@ var PopupHandler = function () {
         this.createPopover();
       }
 
-      // bind addon show/hide events
+      // bind addon show/hide event
       if (this.hasAddon) {
         // enable focus on addons
         if (!this.addon.attr('tabindex')) {
@@ -4043,7 +4043,7 @@ var PopupHandler = function () {
         });
       }
 
-      // bind input show/hide events
+      // bind input show/hide event
       if (this.hasInput && !this.hasAddon) {
         this.input.on({
           'mousedown.colorpicker touchstart.colorpicker': _jquery2.default.proxy(this.show, this),
@@ -4285,7 +4285,7 @@ var PopupHandler = function () {
       // add hidden class after popover is hidden
       cp.picker.addClass('colorpicker-hidden').removeClass('colorpicker-visible');
 
-      // Unbind window and document events, since there is no need to keep them while the popup is hidden
+      // Unbind window and document event, since there is no need to keep them while the popup is hidden
       (0, _jquery2.default)(this.root).off('resize.colorpicker', _jquery2.default.proxy(this.reposition, this));
       (0, _jquery2.default)(this.root.document).off('mousedown.colorpicker touchstart.colorpicker', _jquery2.default.proxy(this.hide, this));
       (0, _jquery2.default)(this.root.document).off('mousedown.colorpicker touchstart.colorpicker', _jquery2.default.proxy(this.onClickingInside, this));

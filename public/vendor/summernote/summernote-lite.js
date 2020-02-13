@@ -1022,7 +1022,7 @@
   var isSupportTouch = (('ontouchstart' in window) ||
       (navigator.MaxTouchPoints > 0) ||
       (navigator.msMaxTouchPoints > 0));
-  // [workaround] IE doesn't have input events for contentEditable
+  // [workaround] IE doesn't have input event for contentEditable
   // - see: https://goo.gl/4bfIvA
   var inputEventName = (isMSIE || isEdge) ? 'DOMCharacterDataModified DOMSubtreeModified DOMNodeInserted' : 'input';
   /**
@@ -2524,7 +2524,7 @@
           if (module.initialize) {
               module.initialize();
           }
-          // attach events
+          // attach event
           if (module.events) {
               dom.attachEvents(this.$note, module.events);
           }
@@ -4896,7 +4896,7 @@
       }
       Editor.prototype.initialize = function () {
           var _this = this;
-          // bind custom events
+          // bind custom event
           this.$editable.on('keydown', function (event) {
               if (event.keyCode === key.code.ENTER) {
                   _this.context.triggerEvent('enter', event);
@@ -7134,7 +7134,7 @@
                       linkInfo.url = linkInfo.text;
                   }
                   $linkText.on('input paste propertychange', function () {
-                      // If linktext was modified by input events,
+                      // If linktext was modified by input event,
                       // cloning text from linkUrl will be stopped.
                       linkInfo.text = $linkText.val();
                       _this.toggleLinkBtn($linkBtn, $linkText, $linkUrl);
@@ -7168,7 +7168,7 @@
                   });
               });
               _this.ui.onDialogHidden(_this.$dialog, function () {
-                  // detach events
+                  // detach event
                   $linkText.off();
                   $linkUrl.off();
                   $linkBtn.off();
@@ -7377,8 +7377,8 @@
 
   /**
    * Image popover module
-   *  mouse events that show/hide popover will be handled by Handle.js.
-   *  Handle.js will receive the events and invoke 'imagePopover.update'.
+   *  mouse event that show/hide popover will be handled by Handle.js.
+   *  Handle.js will receive the event and invoke 'imagePopover.update'.
    */
   var ImagePopover = /** @class */ (function () {
       function ImagePopover(context) {

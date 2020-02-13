@@ -22,7 +22,7 @@ body .fc {
 }
 
 .fc-bgevent {
-  /* default look for background events */
+  /* default look for background event */
   background: #8fdf82;
   opacity: 0.3;
 }
@@ -199,14 +199,14 @@ a[data-goto]:hover {
 }
 
 /*
-row content (which contains day/week numbers and events) as well as "mirror" (which contains
-temporary rendered events).
+row content (which contains day/week numbers and event) as well as "mirror" (which contains
+temporary rendered event).
 */
 .fc-row .fc-content-skeleton {
   position: relative;
   z-index: 4;
   padding-bottom: 2px;
-  /* matches the space above the events */
+  /* matches the space above the event */
 }
 
 .fc-row .fc-mirror-skeleton {
@@ -225,7 +225,7 @@ temporary rendered events).
 
 .fc-row .fc-content-skeleton td,
 .fc-row .fc-mirror-skeleton td {
-  /* don't put a border between events and/or the day number */
+  /* don't put a border between event and/or the day number */
   border-bottom: 0;
 }
 
@@ -280,7 +280,7 @@ temporary rendered events).
 .fc-event[href],
 .fc-event.fc-draggable {
   cursor: pointer;
-  /* give events with links and draggable events a hand mouse pointer */
+  /* give event with links and draggable event a hand mouse pointer */
 }
 
 .fc-not-allowed,
@@ -373,7 +373,7 @@ temporary rendered events).
   right: 0;
 }
 
-/* events that are continuing to/from another week. kill rounded corners and butt up against edge */
+/* event that are continuing to/from another week. kill rounded corners and butt up against edge */
 .fc-ltr .fc-h-event.fc-not-start,
 .fc-rtl .fc-h-event.fc-not-end {
   margin-left: 0;
@@ -449,14 +449,14 @@ temporary rendered events).
   /* centers the 8x8 dot on the right edge */
 }
 
-/* DayGrid events
+/* DayGrid event
 ----------------------------------------------------------------------------------------------------
 We use the full "fc-day-grid-event" class instead of using descendants because the event won't
 be a descendant of the grid when it is being dragged.
 */
 .fc-day-grid-event {
   margin: 1px 2px 0;
-  /* spacing between events and edges */
+  /* spacing between event and edges */
   padding: 0 1px;
 }
 
@@ -471,7 +471,7 @@ tr:first-child > td > .fc-day-grid-event {
 }
 
 .fc-day-grid-event .fc-content {
-  /* force events to be one-line tall */
+  /* force event to be one-line tall */
   white-space: nowrap;
   overflow: hidden;
 }
@@ -497,7 +497,7 @@ tr:first-child > td > .fc-day-grid-event {
 
 /* Event Limiting
 --------------------------------------------------------------------------------------------------*/
-/* "more" link that represents hidden events */
+/* "more" link that represents hidden event */
 a.fc-more {
   margin: 1px 3px;
   font-size: 0.85em;
@@ -926,7 +926,7 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
     height: 1em;
   }
 
-  /* Undo month-view event limiting. Display all events and hide the "more" links
+  /* Undo month-view event limiting. Display all event and hide the "more" links
   --------------------------------------------------------------------------------------------------*/
   .fc-more-cell,
 .fc-more {
@@ -966,12 +966,12 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
     /* important overrides inline declaration */
   }
 
-  /* let the container that holds the events be naturally positioned and create real height */
+  /* let the container that holds the event be naturally positioned and create real height */
   .fc-time-grid .fc-content-skeleton {
     position: static;
   }
 
-  /* in case there are no events, we still want some height */
+  /* in case there are no event, we still want some height */
   .fc-time-grid .fc-content-skeleton table {
     height: 4em;
   }
@@ -983,13 +983,13 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
 
   /* TimeGrid *Event* Restyling
   --------------------------------------------------------------------------------------------------*/
-  /* naturally position events, vertically stacking them */
+  /* naturally position event, vertically stacking them */
   .fc-time-grid .fc-event {
     position: static !important;
     margin: 3px 2px !important;
   }
 
-  /* for events that continue to a future day, give the bottom border back */
+  /* for event that continue to a future day, give the bottom border back */
   .fc-time-grid .fc-event.fc-not-end {
     border-bottom-width: 1px !important;
   }
@@ -999,7 +999,7 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
     content: "...";
   }
 
-  /* for events that are continuations from previous days, give the top border back */
+  /* for event that are continuations from previous days, give the top border back */
   .fc-time-grid .fc-event.fc-not-start {
     border-top-width: 1px !important;
   }

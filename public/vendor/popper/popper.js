@@ -976,7 +976,7 @@ function setupEventListeners(reference, options, state, updateBound) {
 }
 
 /**
- * It will add resize/scroll events and start recalculating
+ * It will add resize/scroll event and start recalculating
  * position of the popper element when they are triggered.
  * @method
  * @memberof Popper
@@ -1011,7 +1011,7 @@ function removeEventListeners(reference, state) {
 }
 
 /**
- * It will remove resize/scroll events and won't recalculate popper position
+ * It will remove resize/scroll event and won't recalculate popper position
  * when they are triggered. It also won't trigger `onUpdate` callback anymore,
  * unless you call `update` method manually.
  * @method
@@ -2280,7 +2280,7 @@ var Defaults = {
   positionFixed: false,
 
   /**
-   * Whether events (resize, scroll) are initially enabled.
+   * Whether event (resize, scroll) are initially enabled.
    * @prop {Boolean} eventsEnabled=true
    */
   eventsEnabled: true,

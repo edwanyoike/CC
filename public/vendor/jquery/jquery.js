@@ -4994,7 +4994,7 @@ function on( elem, types, selector, data, fn, one ) {
 }
 
 /*
- * Helper functions for managing events -- not part of the public interface.
+ * Helper functions for managing event -- not part of the public interface.
  * Props to Dean Edwards' addEvent library for many of the ideas.
  */
 jQuery.event = {
@@ -5008,7 +5008,7 @@ jQuery.event = {
 			special, handlers, type, namespaces, origType,
 			elemData = dataPriv.get( elem );
 
-		// Don't attach events to noData or text/comment nodes (but allow plain objects)
+		// Don't attach event to noData or text/comment nodes (but allow plain objects)
 		if ( !elemData ) {
 			return;
 		}
@@ -5045,7 +5045,7 @@ jQuery.event = {
 			};
 		}
 
-		// Handle multiple events separated by a space
+		// Handle multiple event separated by a space
 		types = ( types || "" ).match( rnothtmlwhite ) || [ "" ];
 		t = types.length;
 		while ( t-- ) {
@@ -5084,7 +5084,7 @@ jQuery.event = {
 				handlers = events[ type ] = [];
 				handlers.delegateCount = 0;
 
-				// Only use addEventListener if the special events handler returns false
+				// Only use addEventListener if the special event handler returns false
 				if ( !special.setup ||
 					special.setup.call( elem, data, namespaces, eventHandle ) === false ) {
 
@@ -5109,13 +5109,13 @@ jQuery.event = {
 				handlers.push( handleObj );
 			}
 
-			// Keep track of which events have ever been used, for event optimization
+			// Keep track of which event have ever been used, for event optimization
 			jQuery.event.global[ type ] = true;
 		}
 
 	},
 
-	// Detach an event or set of events from an element
+	// Detach an event or set of event from an element
 	remove: function( elem, types, handler, selector, mappedTypes ) {
 
 		var j, origCount, tmp,
@@ -5135,7 +5135,7 @@ jQuery.event = {
 			type = origType = tmp[ 1 ];
 			namespaces = ( tmp[ 2 ] || "" ).split( "." ).sort();
 
-			// Unbind all events (on this namespace, if provided) for the element
+			// Unbind all event (on this namespace, if provided) for the element
 			if ( !type ) {
 				for ( type in events ) {
 					jQuery.event.remove( elem, type + types[ t ], handler, selector, true );
@@ -5149,7 +5149,7 @@ jQuery.event = {
 			tmp = tmp[ 2 ] &&
 				new RegExp( "(^|\\.)" + namespaces.join( "\\.(?:.*\\.|)" ) + "(\\.|$)" );
 
-			// Remove matching events
+			// Remove matching event
 			origCount = j = handlers.length;
 			while ( j-- ) {
 				handleObj = handlers[ j ];
@@ -5185,7 +5185,7 @@ jQuery.event = {
 
 		// Remove data and the expando if it's no longer used
 		if ( jQuery.isEmptyObject( events ) ) {
-			dataPriv.remove( elem, "handle events" );
+			dataPriv.remove( elem, "handle event" );
 		}
 	},
 
@@ -5349,7 +5349,7 @@ jQuery.event = {
 	special: {
 		load: {
 
-			// Prevent triggered image.load events from bubbling to window.load
+			// Prevent triggered image.load event from bubbling to window.load
 			noBubble: true
 		},
 		click: {
@@ -5414,8 +5414,8 @@ jQuery.event = {
 };
 
 // Ensure the presence of an event listener that handles manually-triggered
-// synthetic events by interrupting progress until reinvoked in response to
-// *native* events that it fires directly, ensuring that state changes have
+// synthetic event by interrupting progress until reinvoked in response to
+// *native* event that it fires directly, ensuring that state changes have
 // already occurred before other listeners are invoked.
 function leverageNative( el, type, expectSync ) {
 
@@ -5633,7 +5633,7 @@ jQuery.each( {
 	which: function( event ) {
 		var button = event.button;
 
-		// Add which for key events
+		// Add which for key event
 		if ( event.which == null && rkeyEvent.test( event.type ) ) {
 			return event.charCode != null ? event.charCode : event.keyCode;
 		}
@@ -5686,7 +5686,7 @@ jQuery.each( { focus: "focusin", blur: "focusout" }, function( type, delegateTyp
 	};
 } );
 
-// Create mouseenter/leave events using mouseover/out and event-time checks
+// Create mouseenter/leave event using mouseover/out and event-time checks
 // so that event delegation works in jQuery.
 // Do the same for pointerenter/pointerleave and pointerover/pointerout
 //
@@ -5820,7 +5820,7 @@ function cloneCopyEvent( src, dest ) {
 		return;
 	}
 
-	// 1. Copy private data: events, handlers, etc.
+	// 1. Copy private data: event, handlers, etc.
 	if ( dataPriv.hasData( src ) ) {
 		pdataOld = dataPriv.access( src );
 		pdataCur = dataPriv.set( dest, pdataOld );
@@ -5997,7 +5997,7 @@ jQuery.extend( {
 			}
 		}
 
-		// Copy the events from the original to the clone
+		// Copy the event from the original to the clone
 		if ( dataAndEvents ) {
 			if ( deepDataAndEvents ) {
 				srcElements = srcElements || getAll( elem );
@@ -8389,7 +8389,7 @@ jQuery.extend( jQuery.event, {
 
 		cur = lastElement = tmp = elem = elem || document;
 
-		// Don't do events on text and comment nodes
+		// Don't do event on text and comment nodes
 		if ( elem.nodeType === 3 || elem.nodeType === 8 ) {
 			return;
 		}
@@ -8431,13 +8431,13 @@ jQuery.extend( jQuery.event, {
 			[ event ] :
 			jQuery.makeArray( data, [ event ] );
 
-		// Allow special events to draw outside the lines
+		// Allow special event to draw outside the lines
 		special = jQuery.event.special[ type ] || {};
 		if ( !onlyHandlers && special.trigger && special.trigger.apply( elem, data ) === false ) {
 			return;
 		}
 
-		// Determine event propagation path in advance, per W3C events spec (#9951)
+		// Determine event propagation path in advance, per W3C event spec (#9951)
 		// Bubble up to document, then to window; watch for a global ownerDocument var (#9724)
 		if ( !onlyHandlers && !special.noBubble && !isWindow( elem ) ) {
 
@@ -8526,7 +8526,7 @@ jQuery.extend( jQuery.event, {
 	},
 
 	// Piggyback on a donor event to simulate a different one
-	// Used only for `focus(in | out)` events
+	// Used only for `focus(in | out)` event
 	simulate: function( type, elem, event ) {
 		var e = jQuery.extend(
 			new jQuery.Event(),
@@ -8559,11 +8559,11 @@ jQuery.fn.extend( {
 
 
 // Support: Firefox <=44
-// Firefox doesn't have focus(in | out) events
+// Firefox doesn't have focus(in | out) event
 // Related ticket - https://bugzilla.mozilla.org/show_bug.cgi?id=687787
 //
 // Support: Chrome <=48 - 49, Safari <=9.0 - 9.1
-// focus(in | out) events fire after focus & blur events,
+// focus(in | out) event fire after focus & blur event,
 // which is spec violation - http://www.w3.org/TR/DOM-Level-3-Events/#events-focusevent-event-order
 // Related ticket - https://bugs.chromium.org/p/chromium/issues/detail?id=449857
 if ( !support.focusin ) {
@@ -9149,7 +9149,7 @@ jQuery.extend( {
 			// Request state (becomes false upon send and true upon completion)
 			completed,
 
-			// To know if global events are to be dispatched
+			// To know if global event are to be dispatched
 			fireGlobals,
 
 			// Loop variable
@@ -9164,7 +9164,7 @@ jQuery.extend( {
 			// Callbacks context
 			callbackContext = s.context || s,
 
-			// Context for global events is callbackContext if it is a DOM node or jQuery collection
+			// Context for global event is callbackContext if it is a DOM node or jQuery collection
 			globalEventContext = s.context &&
 				( callbackContext.nodeType || callbackContext.jquery ) ?
 					jQuery( callbackContext ) :
@@ -9309,8 +9309,8 @@ jQuery.extend( {
 			return jqXHR;
 		}
 
-		// We can fire global events as of now if asked to
-		// Don't fire events if jQuery.event is undefined in an AMD-usage scenario (#15118)
+		// We can fire global event as of now if asked to
+		// Don't fire event if jQuery.event is undefined in an AMD-usage scenario (#15118)
 		fireGlobals = jQuery.event && s.global;
 
 		// Watch for a new set of requests
@@ -9800,7 +9800,7 @@ jQuery.ajaxTransport( function( options ) {
 					};
 				};
 
-				// Listen to events
+				// Listen to event
 				xhr.onload = callback();
 				errorCallback = xhr.onerror = xhr.ontimeout = callback( "error" );
 
@@ -10148,7 +10148,7 @@ jQuery.fn.load = function( url, params, callback ) {
 
 
 
-// Attach a bunch of functions for handling common AJAX events
+// Attach a bunch of functions for handling common AJAX event
 jQuery.each( [
 	"ajaxStart",
 	"ajaxStop",

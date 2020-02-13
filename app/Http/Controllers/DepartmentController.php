@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Church;
 use App\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DepartmentController extends Controller
 {
@@ -14,7 +16,10 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::all();
+
+        return view('department.index')->with(compact('departments'));
+
     }
 
     /**
@@ -24,7 +29,8 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        $churches = Church::all();
+        return view('department.create')->with(compact('churches'));
     }
 
     /**
@@ -33,11 +39,35 @@ class DepartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $this->validateRequest();
+        DB::transaction(function () {
+            $department = new Department(request(['name']));
+            $church_id = request(['parentChurch']);
+            $church = Church::find(intval($church_id));
+
+            $church->departments()->save($department);
+
+            $department->save();
+
+        });
+
+        return redirect('department/index');
+
+
+
     }
 
+    protected function validateRequest()
+    {
+        return request()->validate([
+                'name' => 'required|unique:churches|max:255',
+                'parentChurch' => 'required|max:2'
+            ]
+
+        );
+    }
     /**
      * Display the specified resource.
      *
@@ -82,4 +112,21 @@ class DepartmentController extends Controller
     {
         //
     }
+
+    public function departmentEvents(){
+        $events = Department::all();
+
+        return view('department.event')->with(compact('events'));
+
+
+    }
+
+    public function createDepartmentEvent(){
+        $departments = Department::all();
+
+        return view('department.createEvent')->with(compact('departments'));
+
+    }
+
+
 }
