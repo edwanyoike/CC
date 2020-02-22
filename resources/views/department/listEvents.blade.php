@@ -18,23 +18,30 @@
                         <thead>
                         <tr role="row">
                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-sort="ascending" aria-label="First Name: activate to sort column descending"
+                                aria-sort="ascending" aria-label="event Name: activate to sort column descending"
                                 style="width: 170px;">Event Name
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Second Name: activate to sort column ascending" style="width: 220px;">Event
-                                Date
+                                aria-label="start at: activate to sort column ascending" style="width: 220px;">Event
+                                start at
                             </th>
+
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Church: activate to sort column ascending" style="width: 194px;">
+                                aria-label="Ends at: activate to sort column ascending" style="width: 220px;">Event
+                                ends at
+                            </th>
+
+
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="venue: activate to sort column ascending" style="width: 194px;">
                                 Venue
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Phone Number: activate to sort column ascending" style="width: 144px;">
-                                Organizer
+                                aria-label="Organizing Departments: activate to sort column ascending" style="width: 144px;">
+                                Organizing department(s)
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Phone Number: activate to sort column ascending" style="width: 144px;">
+                                aria-label="Budget: activate to sort column ascending" style="width: 144px;">
                                 Allocated Budget
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
@@ -54,10 +61,16 @@
                         @foreach($events as $event)
 
                             <tr role="row" class="odd">
-                                <td class="sorting_1">{{$event->firstName}}</td>
-                                <td>{{$event->secondName}}</td>
-                                <td>{{$event->memberable->name}}</td>
-                                <td>{{$event->address->phoneNumber}}</td>
+                                <td class="sorting_1">{{$event->name}}</td>
+                                <td>{{$event->event_start_date}}</td>
+                                <td>{{$event->event_end_date}}</td>
+
+                                <td>{{$event->venue}}</td>
+                                <td>{{$event->budget}}</td>
+
+
+                                <td>{{$kityyBalance}}</td>
+
                                 <td class=" text-right">
                                     <a class="btn btn-primary btn-sm" href="{{$member->id}}" title="more details">
                                         <i class="fas fa-folder">

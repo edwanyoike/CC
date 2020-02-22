@@ -28,3 +28,16 @@
 </div>
 
 
+
+<div class="form-group">
+    <label for="budget">Event Budget</label>
+    <div> {{$errors->first('budget')}}</div>
+    <div class="input-group-prepend">
+        <span class="input-group-text">$</span>
+        <input type="number" name="budget" id="event_budget" value="{{old('budget')}}"
+               class="form-control">
+    </div>
+
+</div>
+
+

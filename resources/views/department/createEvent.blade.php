@@ -2,6 +2,8 @@
 
 @section('title', 'Create Church')
 @section('plugins.daterangepicker', true)
+@section('custom-file-input', true)
+
 
 
 @section('content_header')
@@ -34,17 +36,14 @@
 
                             @include('churchevent.create')
 
-
-
                                 <div class="form-group">
-                                    <label for="member_departments">Organizing Department(s)</label>
+                                    <label for="organizing_department">Organizing Department(s)</label>
                                     <div> {{$errors->first('departments')}}</div>
-                                    <select class="department-multiple-select col-md-7" id="member_departments"
+                                    <select class="department-multiple-select  col-md-7" id="organizing_department"
                                             name="departments[]" multiple="multiple">
 
                                         @foreach($departments as $department)
                                             <option value="{{$department->id}}">{{$department->name}}</option>
-
                                         @endforeach
                                     </select>
 
@@ -56,7 +55,45 @@
                     <!-- /.card -->
                 </div>
 
+
+                <div class="col-md-6 align-content-center">
+                    <div class="card card-secondary card-blue">
+                        <div class="card-header">
+                            <h3 class="card-title">Event Poster</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                        data-toggle="tooltip"
+                                        title="Collapse">
+                                    <i class="fas fa-minus"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-6">
+
+                            <label for="eventPoster">Event Poster</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="eventPoster" id="event_poster">
+                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+                </div>
             </div>
+
+
+
+                <div class="col-12">
+                    <input type="submit" value="Create Event    " class="btn btn-success ">
+                </div>
+
 
         </form>
 
@@ -86,7 +123,21 @@
             $('.department-multiple-select').select2();
 
 
+        });
+
+        $('#event_date').daterangepicker({
+            timePicker: true,
+            startDate: moment().startOf('hour'),
+            endDate: moment().startOf('hour').add(32, 'hour'),
+            "timePicker24Hour": true,
+            locale: {
+                format: 'Y/M/DD hh:mm '
+            }
         })
+
+        $(document).ready(function () {
+            bsCustomFileInput.init();
+        });
     </script>
 @stop
 

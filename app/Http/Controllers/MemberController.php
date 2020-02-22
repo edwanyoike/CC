@@ -7,11 +7,9 @@ use App\Address;
 use App\Church;
 use App\Department;
 use App\Member;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
 
 class MemberController extends Controller
 {
@@ -30,7 +28,6 @@ class MemberController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
      * @return Response
      */
     public function create()
@@ -55,28 +52,28 @@ class MemberController extends Controller
 
         DB::transaction(function () {
 
-                $member = new Member(request(['firstName', 'secondName', 'gender']));
-                $church_id = request(['memberChurch']);
+            $member = new Member(request(['firstName', 'secondName', 'gender']));
+            $church_id = request(['memberChurch']);
 
-                $church = Church::find(intval($church_id));
+            $church = Church::find((int)$church_id);
 
 
-                $church->members()->save($member);
+            $church->members()->save($member);
 
-                $member->save();
+            $member->save();
 
-                $member_departments = request('departments');
-                if (sizeof($member_departments) > 0) {
+            $member_departments = request('departments');
+            if (count($member_departments) > 0) {
 
-                    foreach ($member_departments as $department_id) {
+                foreach ($member_departments as $department_id) {
 
-                        $department = Department::findOrFail(intval($department_id));
-                        $member->departments()->save($department);
+                    $department = Department::findOrFail((int)$department_id);
+                    $member->departments()->save($department);
 
-                    }
                 }
+            }
 
-                $member->address()->save(new Address(request(['phoneNumber', 'emailAddress', 'location'])));
+            $member->address()->save(new Address(request(['phoneNumber', 'emailAddress', 'location'])));
 
         });
 

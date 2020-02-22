@@ -419,6 +419,30 @@ return [
 
     'plugins' => [
         [
+            'name' => 'daterangepicker',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.jsdelivr.net/jquery/latest/jquery.min.js',
+                ], [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.jsdelivr.net/momentjs/latest/moment.min.js',
+                ], [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '//cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css',
+                ],
+            ],
+        ],
+        [
             'name' => 'Datatables',
             'active' => true,
             'files' => [
@@ -439,7 +463,8 @@ return [
                 ],
             ],
         ],
-        [
+
+              [
             'name' => 'Select2',
             'active' => true,
             'files' => [
@@ -455,6 +480,8 @@ return [
                 ],
             ],
         ],
+
+
         [
             'name' => 'Chartjs',
             'active' => false,
@@ -474,6 +501,16 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                ],
+            ],
+        ],[
+            'name' => 'custom-file-input',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js',
                 ],
             ],
         ],

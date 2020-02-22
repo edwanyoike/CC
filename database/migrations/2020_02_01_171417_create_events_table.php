@@ -17,7 +17,9 @@ class CreateEventsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('name');
-            $table->dateTime('event_date');
+            $table->timestamp('event_start_date');
+            $table->timestamp('event_end_date');
+            $table->string('event_poster_url');
             $table->string('venue');
 
             $table->decimal('budget', 8, 2);

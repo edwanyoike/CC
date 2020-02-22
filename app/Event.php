@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    protected $table = 'events';
+    protected $guarded=[];
     //eventable
 
     public function eventable()
@@ -13,4 +15,5 @@ class Event extends Model
         return $this->morphTo();
 
     }
+
 }

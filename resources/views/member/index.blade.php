@@ -4,6 +4,9 @@
 
 @section('content_header')
     <h1>Church Members</h1>
+
+@section('plugins.Datatables', true)
+
 @stop
 @section('content')
 
