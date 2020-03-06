@@ -35,6 +35,12 @@ Route::get('department/event', 'DepartmentController@departmentEvents');
 Route::get('department/createEvent', 'DepartmentController@createDepartmentEvent');
 
 
+Route::post('event/department', 'EventController@storeDepartmentEvent');
+
+
+
+
+
 
 
 

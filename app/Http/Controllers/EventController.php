@@ -47,27 +47,30 @@ class EventController extends Controller
     {
         $this->validateRequest();
 
-        $event = new Event(request(['eventName', 'venue','budget']));
+
+        $event = new Event(request(['name', 'venue','budget']));
 
 
+        $event_start_end_date_arr = request(['eventDate']);
+        $date_as_string = $event_start_end_date_arr['eventDate'];
 
-        $event_start_end_date = request(['eventDate']);
 
-        $split_date  = explode('-',$event_start_end_date);
+        $split_date  = explode('-',$date_as_string);
 
-        $start_date = DateTime::createFromFormat('Y/m/d H:i', $split_date[0]);
-        $end_date = DateTime::createFromFormat('Y/m/d H:i', $split_date[1]);
+        $start_date = date_create_from_format('Y/m/d H:i',trim( $split_date[0]));
+        $end_date = date_create_from_format('Y/m/d H:i',trim($split_date[1]));
 
         $event->event_start_date = $start_date->getTimestamp();
         $event->event_end_date = $end_date->getTimestamp();
 
-        if(request()->exists('eventPoster')){
 
-            $path = $request->file('eventPoster')->storeAs(
-                'eventposters', request(['eventName']).$event_start_end_date,'local'
-            );
 
-            $event->event_poster_url = $path;
+        if($eventPoster=$request->file('eventPoster')){
+
+            $name= $request->eventName. 'poster'.$eventPoster->extension();
+            $eventPoster->move('eventposters',$name);
+
+            $event->event_poster_url = $name;
 
         }
 
@@ -87,6 +90,8 @@ class EventController extends Controller
 
             $event->save();
 
+            return redirect('department/event');
+
         });
 
     }
@@ -94,7 +99,7 @@ class EventController extends Controller
     protected function validateRequest()
     {
         return request()->validate([
-                'eventName' => 'required|max:255',
+                'name' => 'required|max:255',
                 'eventDate' => 'required|max:255',
                 'venue' => 'required|max:255',
                 'departments' => 'array|min:1',

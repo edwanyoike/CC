@@ -2,7 +2,7 @@
 
     <label for="event_name">Event Name</label>
     <div> {{$errors->first('eventName')}}</div>
-    <input type="text" name="eventName" id="event_name" value="{{old('eventName')}}"
+    <input type="text" name="name" id="event_name" value="{{old('eventName')}}"
            class="form-control">
 </div>
 

@@ -66,24 +66,28 @@
                                 <td>{{$event->event_end_date}}</td>
 
                                 <td>{{$event->venue}}</td>
+
+                                <td>{{$event->venue}}</td>
+
                                 <td>{{$event->budget}}</td>
 
 
-                                <td>{{$kityyBalance}}</td>
+{{--                                <td>{{$kityyBalance}}</td>--}}
+                             <td>{{15000}}</td>
 
                                 <td class=" text-right">
-                                    <a class="btn btn-primary btn-sm" href="{{$member->id}}" title="more details">
+                                    <a class="btn btn-primary btn-sm" href="{{$event->id}}" title="more details">
                                         <i class="fas fa-folder">
                                         </i>
 
                                     </a>
-                                    <a class="btn btn-info btn-sm" href="" title="edit church details">
+                                    <a class="btn btn-info btn-sm" href="" title="edit event details">
                                         <i class="fas fa-pencil-alt">
                                         </i>
 
 
                                     </a>
-                                    <a class="btn btn-danger btn-sm" href="#" title="delete">
+                                    <a class="btn btn-danger btn-sm" href="#" title="delete event">
                                         <i class="fas fa-trash">
                                         </i>
 
@@ -98,9 +102,10 @@
                         <tfoot>
                         <tr>
                             <th rowspan="1" colspan="1">Event Name</th>
-                            <th rowspan="1" colspan="1">Event Date</th>
+                            <th rowspan="1" colspan="1">Event start at</th>
+                            <th rowspan="1" colspan="1">Event ends at</th>
                             <th rowspan="1" colspan="1">Venue</th>
-                            <th rowspan="1" colspan="1">Organizer</th>
+                            <th rowspan="1" colspan="1">Organizing department(s)</th>
                             <th rowspan="1" colspan="1">Allocated Budget</th>
                             <th rowspan="1" colspan="1">Kitty's Balance</th>
                             <th rowspan="1" colspan="1">Actions</th>

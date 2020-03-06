@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Church;
 use App\Department;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
 class DepartmentController extends Controller
@@ -12,7 +13,7 @@ class DepartmentController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -25,7 +26,7 @@ class DepartmentController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -36,8 +37,8 @@ class DepartmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store()
     {
@@ -45,7 +46,7 @@ class DepartmentController extends Controller
         DB::transaction(function () {
             $department = new Department(request(['name']));
             $church_id = request(['parentChurch']);
-            $church = Church::find(intval($church_id));
+            $church = Church::find((int)$church_id);
 
             $church->departments()->save($department);
 
@@ -54,7 +55,6 @@ class DepartmentController extends Controller
         });
 
         return redirect('department/index');
-
 
 
     }
@@ -68,11 +68,12 @@ class DepartmentController extends Controller
 
         );
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  \App\Department  $department
-     * @return \Illuminate\Http\Response
+     * @param Department $department
+     * @return Response
      */
     public function show(Department $department)
     {
@@ -82,8 +83,8 @@ class DepartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Department  $department
-     * @return \Illuminate\Http\Response
+     * @param Department $department
+     * @return Response
      */
     public function edit(Department $department)
     {
@@ -93,9 +94,9 @@ class DepartmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Department  $department
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Department $department
+     * @return Response
      */
     public function update(Request $request, Department $department)
     {
@@ -105,26 +106,38 @@ class DepartmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Department  $department
-     * @return \Illuminate\Http\Response
+     * @param Department $department
+     * @return Response
      */
     public function destroy(Department $department)
     {
         //
     }
 
-    public function departmentEvents(){
-        $events = Department::all();
+    public function departmentEvents()
+    {
+        $departments = Department::all();
+        $events=array();
 
-        return view('department.event')->with(compact('events'));
+
+        foreach ($departments as $department) {
+            if (count($department->events) > 0) {
+                array_merge($events,$department->events);
+            }
+
+        }
+
+        return view('department.listEvents')->with(compact('events'));
 
 
     }
 
-    public function createDepartmentEvent(){
+    public function createDepartmentEvent()
+    {
         $departments = Department::all();
 
         return view('department.createEvent')->with(compact('departments'));
+
 
     }
 

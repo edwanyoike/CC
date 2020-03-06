@@ -12,9 +12,9 @@
 
 @section('content')
 
-    @if (sizeof($departments)>0)
+    @if (count($departments)>0)
 
-        <form method="POST" action="/member/store">
+        <form method="POST" action="/event/department" enctype="multipart/form-data" >
             @csrf
 
             <div class="row ">
@@ -72,11 +72,9 @@
 
                             <label for="eventPoster">Event Poster</label>
                             <div class="input-group">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="eventPoster" id="event_poster">
-                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                </div>
 
+                                    <input type="file" name="eventPoster" id="event_poster">
+                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
 
                             </div>
                         </div>
@@ -91,7 +89,7 @@
 
 
                 <div class="col-12">
-                    <input type="submit" value="Create Event    " class="btn btn-success ">
+                    <input type="submit" value="Create Event" class="btn btn-success ">
                 </div>
 
 
