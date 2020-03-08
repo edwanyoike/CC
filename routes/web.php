@@ -22,8 +22,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('church/index', 'ChurchController@index');
-
 Route::get('church/event', 'ChurchController@createChurchEvent');
+Route::get('church/storeEvent', 'ChurchController@createChurchEvent');
+Route::get('church/eventlist', 'ChurchController@churchEvents');
 Route::get('church/create', 'ChurchController@create');
 Route::post('church/store', 'ChurchController@store');
 Route::post('church/update', 'ChurchController@store');
@@ -37,9 +38,12 @@ Route::post('member/store', 'MemberController@store');
 Route::get('department/index', 'DepartmentController@index');
 Route::get('department/create', 'DepartmentController@create');
 Route::post('department/store', 'DepartmentController@store');
-Route::get('department/event', 'DepartmentController@departmentEvents');
+Route::get('department/eventlist', 'DepartmentController@departmentEvents');
 Route::get('department/createEvent', 'DepartmentController@createDepartmentEvent');
-Route::post('event/department', 'EventController@storeDepartmentEvent');
+
+
+Route::post('/event/storedepartmentevent', 'EventController@storeDepartmentEvent');
+Route::post('/event/storechurchevent', 'EventController@storeChurchEvent');
 
 
 

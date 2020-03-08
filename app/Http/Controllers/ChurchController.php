@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Address;
 use App\Church;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -38,6 +39,25 @@ class ChurchController extends Controller
     {
         $churches = Church::all();
         return view('church.createEvent')->with(compact('churches'));
+    }
+
+
+    public function churchEvents()
+    {
+        $Churches = Church::all();
+        $events = new Collection();
+
+
+        foreach ($Churches as $church) {
+            if (count($church->events) > 0) {
+                $events = $events->merge($church->events);
+            }
+
+        }
+
+        return view('church.listEvents')->with(compact('events'));
+
+
     }
 
     /**

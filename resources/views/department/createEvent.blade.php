@@ -14,7 +14,7 @@
 
     @if (count($departments)>0)
 
-        <form method="POST" action="/event/department" enctype="multipart/form-data" >
+        <form method="POST" action="/event/storedepartmentevent" enctype="multipart/form-data" >
             @csrf
 
             <div class="row ">

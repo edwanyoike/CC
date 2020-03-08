@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Church;
 use App\Department;
 use App\Event;
 use DateTime;
@@ -48,30 +49,7 @@ class EventController extends Controller
         $this->validateRequest();
 
 
-        $event = new Event(request(['name', 'venue','budget']));
-
-
-        $event_start_end_date_arr = request(['eventDate']);
-        $date_as_string = $event_start_end_date_arr['eventDate'];
-
-
-        $split_date  = explode('-',$date_as_string);
-
-        $start_date = date_create_from_format('Y/m/d H:i',trim( $split_date[0]));
-        $end_date = date_create_from_format('Y/m/d H:i',trim($split_date[1]));
-
-        $event->event_start_date = $start_date;
-        $event->event_end_date = $end_date;
-
-
-
-
-        if($eventPoster=$request->file('eventPoster')){
-
-            $path = $eventPoster->store('public/eventposters');
-            $event->event_poster_url = $path;
-
-        }
+        $event = $this->initEvent($request);
 
         DB::transaction(static function () use ($event) {
 
@@ -91,7 +69,36 @@ class EventController extends Controller
 
         });
 
-        return redirect('department/event');
+        return redirect('department/eventlist');
+
+    }
+
+    public function storeChurchEvent(Request $request)
+    {
+       // $this->validateRequest();
+
+
+        $event = $this->initEvent($request);
+
+        DB::transaction(static function () use ($event) {
+
+            $organizing_church= request('churches');
+            if (count($organizing_church) > 0) {
+
+                foreach ($organizing_church as $church_id) {
+
+                    $church = Church::findOrFail((int)$church_id);
+
+                    $church->events()->save($event);
+
+                }
+            }
+
+            $event->save();
+
+        });
+
+        return redirect('church/eventlist');
 
     }
 
@@ -151,6 +158,37 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         //
+    }
+
+    /**
+     * @param Request $request
+     * @return Event
+     */
+    public function initEvent(Request $request): Event
+    {
+        $event = new Event(request(['name', 'venue', 'budget']));
+
+
+        $event_start_end_date_arr = request(['eventDate']);
+        $date_as_string = $event_start_end_date_arr['eventDate'];
+
+
+        $split_date = explode('-', $date_as_string);
+
+        $start_date = date_create_from_format('Y/m/d H:i', trim($split_date[0]));
+        $end_date = date_create_from_format('Y/m/d H:i', trim($split_date[1]));
+
+        $event->event_start_date = $start_date;
+        $event->event_end_date = $end_date;
+
+
+        if ($eventPoster = $request->file('eventPoster')) {
+
+            $path = $eventPoster->store('public/eventposters');
+            $event->event_poster_url = $path;
+
+        }
+        return $event;
     }
 
 

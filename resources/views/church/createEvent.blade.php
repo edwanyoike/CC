@@ -14,7 +14,7 @@
 
     @if (count($churches)>0)
 
-        <form method="POST" action="/event/church" enctype="multipart/form-data" >
+        <form method="POST" action="/event/storechurchevent" enctype="multipart/form-data" >
             @csrf
 
             <div class="row ">
@@ -37,8 +37,8 @@
                             @include('churchevent.create')
 
                             <div class="form-group">
-                                <label for="organizing_department">Organizing Church(s)</label>
-                                <div> {{$errors->first('departments')}}</div>
+                                <label for="organizing_church">Organizing Church(s)</label>
+                                <div> {{$errors->first('churches')}}</div>
                                 <select class="church-multiple-select  col-md-7" id="organizing_church"
                                         name="churches[]" multiple="multiple">
 
@@ -74,7 +74,7 @@
                             <div class="input-group">
 
                                 <input type="file" name="eventPoster" id="event_poster">
-                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+{{--                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>--}}
 
                             </div>
                         </div>

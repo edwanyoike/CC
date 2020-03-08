@@ -197,7 +197,7 @@ return [
                     'submenu' => [
                         [
                             'text' => 'All Events',
-                            'url' => 'church/eventList',
+                            'url' => 'church/eventlist',
                             'icon' => 'fas fa-caret-right',
 
                         ],
@@ -271,7 +271,7 @@ return [
                     'submenu' => [
                         [
                             'text' => 'All Events',
-                            'url' => 'department/event',
+                            'url' => 'department/eventlist',
                             'icon' => 'fas fa-caret-right',
 
                         ],
