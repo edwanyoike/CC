@@ -67,7 +67,7 @@
 
                                 <td>{{$event->venue}}</td>
 
-                                <td>{{$event->venue}}</td>
+                                <td>{{$event->eventable->name}}</td>
 
                                 <td>{{$event->budget}}</td>
 

@@ -60,17 +60,16 @@ class EventController extends Controller
         $start_date = date_create_from_format('Y/m/d H:i',trim( $split_date[0]));
         $end_date = date_create_from_format('Y/m/d H:i',trim($split_date[1]));
 
-        $event->event_start_date = $start_date->getTimestamp();
-        $event->event_end_date = $end_date->getTimestamp();
+        $event->event_start_date = $start_date;
+        $event->event_end_date = $end_date;
+
 
 
 
         if($eventPoster=$request->file('eventPoster')){
 
-            $name= $request->eventName. 'poster'.$eventPoster->extension();
-            $eventPoster->move('eventposters',$name);
-
-            $event->event_poster_url = $name;
+            $path = $eventPoster->store('public/eventposters');
+            $event->event_poster_url = $path;
 
         }
 
@@ -90,9 +89,9 @@ class EventController extends Controller
 
             $event->save();
 
-            return redirect('department/event');
-
         });
+
+        return redirect('department/event');
 
     }
 

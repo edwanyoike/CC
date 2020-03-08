@@ -22,7 +22,7 @@ class CreateEventsTable extends Migration
             $table->string('event_poster_url');
             $table->string('venue');
 
-            $table->decimal('budget', 8,6);
+            $table->decimal('budget', 15,2);
 
             $table->integer('eventable_id')->unsigned();
             $table->string('eventable_type');

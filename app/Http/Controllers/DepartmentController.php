@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Church;
 use App\Department;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -98,7 +99,7 @@ class DepartmentController extends Controller
      * @param Department $department
      * @return Response
      */
-    public function update(Request $request, Department $department)
+    public function  update(Request $request, Department $department)
     {
         //
     }
@@ -117,12 +118,12 @@ class DepartmentController extends Controller
     public function departmentEvents()
     {
         $departments = Department::all();
-        $events=array();
+        $events=new Collection();
 
 
         foreach ($departments as $department) {
             if (count($department->events) > 0) {
-                array_merge($events,$department->events);
+                $events = $events->merge($department->events);
             }
 
         }

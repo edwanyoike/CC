@@ -190,6 +190,44 @@ return [
                     'url' => 'church/create',
                     'icon' => 'fas fa-caret-right',
                 ],
+
+                [
+                    'text' => 'Church Events',
+                    'icon' => 'fa fa-plus-square',
+                    'submenu' => [
+                        [
+                            'text' => 'All Events',
+                            'url' => 'church/eventList',
+                            'icon' => 'fas fa-caret-right',
+
+                        ],
+                        [
+                            'text' => 'New Event',
+                            'url' => 'church/event',
+                            'icon' => 'fas fa-caret-right',
+
+                        ],
+                    ],
+
+                ],
+                [
+                    'text' => 'Church Projects',
+                    'icon' => 'fa fa-plus-square',
+                    'submenu' => [
+                        [
+                            'text' => 'All Projects',
+                            'url' => 'project/index',
+                            'icon' => 'fas fa-caret-right',
+
+                        ],
+                        [
+                            'text' => 'New Project',
+                            'url' => 'project/create',
+                            'icon' => 'fas fa-caret-right',
+
+                        ],
+                    ],
+                ]
             ],
         ],
 
@@ -232,89 +270,48 @@ return [
                     'icon' => 'fa fa-plus-square',
                     'submenu' => [
                         [
-                            'text' => 'List All Events',
+                            'text' => 'All Events',
                             'url' => 'department/event',
                             'icon' => 'fas fa-caret-right',
 
                         ],
                         [
-                            'text' => 'Create a New Event',
+                            'text' => 'New Event',
                             'url' => 'department/createEvent',
                             'icon' => 'fas fa-caret-right',
 
                         ],
                     ],
 
-                ]
-            ],
-        ],
-
-        [
-            'text' => 'Church Events',
-            'icon' => '""',
-            'submenu' => [
-                [
-                    'text' => 'List All Events',
-                    'url' => 'event/index',
-                    'icon' => 'fas fa-caret-right',
-
                 ],
                 [
-                    'text' => 'Create a New Event',
-                    'url' => 'event/create',
-                    'icon' => 'fas fa-caret-right',
-
-                ],
-                [
-                    'text' => 'Church Events',
-                    'icon' => '',
+                    'text' => 'Department Projects',
+                    'icon' => 'fa fa-plus-square',
                     'submenu' => [
                         [
-                            'text' => 'List All Events',
-                            'url' => 'event/index',
+                            'text' => 'All Projects',
+                            'url' => 'project/index',
                             'icon' => 'fas fa-caret-right',
 
                         ],
                         [
-                            'text' => 'Create a New Event',
-                            'url' => 'event/create',
+                            'text' => 'New Project',
+                            'url' => 'project/create',
                             'icon' => 'fas fa-caret-right',
 
                         ],
                     ],
-
                 ]
             ],
         ],
-
-        [
-            'text' => 'Church Projects',
-            'icon' => '""',
-            'submenu' => [
-                [
-                    'text' => 'List All Projects',
-                    'url' => 'project/index',
-                    'icon' => 'fas fa-caret-right',
-
-                ],
-                [
-                    'text' => 'Create a New Project',
-                    'url' => 'project/create',
-                    'icon' => 'fas fa-caret-right',
-
-                ],
-            ],
-        ],
-
-
         [
             'text' => 'Contributions',
-            'icon' => '""',
+            'icon' => 'fa fa-plus-square',
             'submenu' => [
                 [
-                    'text' => 'Contributions Summary',
+                    'text' => 'Summary',
                     'url' => 'contribution/index',
-                    'icon' => 'fas fa-fw fa-chart-bar',
+                    'icon' => 'fas fa-caret-right',
 
                 ],
                 [
@@ -324,12 +321,12 @@ return [
                         [
                             'text' => 'Single Member Contribution',
                             'url' => '#',
-                            'icon' => 'fas fa-fw fa-user-plus',
+                            'icon' => 'fas fa-caret-right',
                         ],
                         [
                             'text' => 'Batch Contribution Upload',
                             'url' => '#',
-                            'icon' => 'fas fa-fw fa-users',
+                            'icon' => 'fas fa-caret-right',
                         ],
                     ],
 
@@ -338,17 +335,17 @@ return [
         ],
 
         [
-            'text' => 'Fund drive',
-            'icon' => '""',
+            'text' => 'Fund Drives',
+            'icon' => 'fas fa-fw fa-plus-square',
             'submenu' => [
                 [
-                    'text' => 'List All Fund Drives',
+                    'text' => 'All Fund Drives',
                     'url' => 'fundraiser/index',
                     'icon' => 'fas fa-caret-right',
 
                 ],
                 [
-                    'text' => 'Create a New Fund Drive',
+                    'text' => 'New Fund Drive',
                     'url' => 'fundraiser/create',
                     'icon' => 'fas fa-caret-right',
 

@@ -34,6 +34,12 @@ class ChurchController extends Controller
         return view("church.create");
     }
 
+    public function createChurchEvent()
+    {
+        $churches = Church::all();
+        return view('church.createEvent')->with(compact('churches'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
