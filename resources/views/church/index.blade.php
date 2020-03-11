@@ -16,6 +16,13 @@
                            aria-describedby="example1_info">
                         <thead>
                         <tr role="row">
+
+                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-sort="ascending" aria-label="code : activate to sort column descending"
+                                style="width: 170px;">#
+                            </th>
+
+
                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                 aria-sort="ascending" aria-label="First Name: activate to sort column descending"
                                 style="width: 170px;">Church
@@ -47,9 +54,12 @@
                             <tr>
 
                                 <td>
-                                    <a>
-                                        {{$church->name}}</a>
-                                    <br>
+                                    {{$church->code}}
+                                </td>
+
+                                <td>
+                                    <a>{{$church->name}}</a>
+
                                 </td>
                                 <td>
                                     {{$church->isMotherChurch}}
@@ -86,6 +96,7 @@
                         </tbody>
                         <tfoot>
                         <tr>
+                            <th rowspan="1" colspan="1">#</th>
                             <th rowspan="1" colspan="1">First Name</th>
                             <th rowspan="1" colspan="1">Second Name</th>
                             <th rowspan="1" colspan="1">Church</th>

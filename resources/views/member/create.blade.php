@@ -8,7 +8,7 @@
 
 @section('content')
 
-    @if (sizeof($churches)>0)
+    @if (count($churches)>0)
 
         <form method="POST" action="/member/store">
             @csrf

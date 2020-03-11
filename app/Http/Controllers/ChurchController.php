@@ -72,6 +72,8 @@ class ChurchController extends Controller
         DB::transaction(function () {
             $church = new Church(request(['name', 'isMotherChurch']));
             $church->save();
+            $church->code = 'C'.$church->id;
+
             $church->address()->save(new Address(request(['phoneNumber', 'emailAddress', 'location'])));
         });
 

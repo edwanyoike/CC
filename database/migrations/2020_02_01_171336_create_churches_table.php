@@ -17,6 +17,7 @@ class CreateChurchesTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('name');
+            $table->string('code');
             $table->boolean('isMotherChurch');
 
 
