@@ -6,13 +6,17 @@ namespace App\Http\Controllers;
 use App\Address;
 use App\Church;
 use App\Department;
+use App\Imports\MembersImport;
 use App\Member;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+
 
 class MemberController extends Controller
 {
@@ -133,79 +137,45 @@ class MemberController extends Controller
         //
     }
 
+    public function importForm(Request $request)
+    {
+        return view("member.import");
+
+    }
+
 
     public function importFromExcel(Request $request)
     {
 
         try {
             $this->validate($request, [
-                'select_file' => 'required|mimes:xls,xlsx'
+             //   'file' => 'required|mimes:xls,xlsx'
             ]);
         } catch (ValidationException $e) {
             return back()->with('error', 'An error occurred while validating data');
         }
 
-        $path = $request->file('select_file')->getRealPath();
+        $path = $request->file('file')->getRealPath();
 
-        $data = Excel::load($path)->get();
+        $reader =IOFactory::createReaderForFile($path);
+        $reader->setReadDataOnly(true);
+        $spreadsheet = $reader->load($path);
 
-        if ($data->count() > 0) {
-            try {
-
-
-                foreach ($data->toArray() as $key => $value) {
-                    foreach ($value as $row) {
-
-                        $churchCode = $row['churchCode'];
-
-
-                        $church = DB::table('churches')->where('code', $churchCode)->get();
-
-                        if ($church !== null) {
-                            $firstName = $row['firstName'];
-                            $secondName = $row['secondName'];
-                            $gender = $row['gender'];
-
-                            $phoneNumber = $row['phoneNumber'];
-                            $emailAddress = $row['emailAddress'];
-                            $location = $row['location'];
-
-                            $member = new Member();
-                            $member->firstName = $firstName;
-                            $member->secondName = $secondName;
-                            $member->gender = $gender;
-
-
-                            $church->members()->save($member);
-
-                            $member->save();
-
-                            $address = new Address();
-
-                            $address->phoneNumber = $phoneNumber;
-                            $address->emailAddress = $emailAddress;
-                            $address->location = $location;
-
-
-                            $member->address()->save($address);
-
-
-                        } else {
-                            return back()->with('error', 'specify a church code in the system');
-                        }
-
-
-                    }
-                }
-            } catch (Exception $e) {
-                return back()->with('error', 'File has invalid columns');
-
+        $worksheet = $spreadsheet->getActiveSheet();
+        $rows = [];
+        foreach ($worksheet->getRowIterator() AS $row) {
+            $cellIterator = $row->getCellIterator();
+            $cellIterator->setIterateOnlyExistingCells(true); // This doesnt' loops through all cells,
+            $cells = [];
+            foreach ($cellIterator as $cell) {
+                $cells[] = $cell->getValue();
             }
-
-            return back()->with('success', 'Excel Data Imported successfully.');
-
-
+            $rows[] = $cells;
         }
+
+        dd($rows);
+
+
     }
 
 

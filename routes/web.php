@@ -34,6 +34,7 @@ Route::get('church/{church}', 'ChurchController@show');
 Route::get('member/index', 'MemberController@index');
 Route::get('member/create', 'MemberController@create');
 Route::post('member/store', 'MemberController@store');
+Route::get('member/importform', 'MemberController@importForm');
 Route::post('member/import', 'MemberController@importFromExcel');
 
 Route::get('department/index', 'DepartmentController@index');

@@ -236,14 +236,20 @@ return [
             'icon' => 'fa fa-plus-square',
             'submenu' => [
                 [
-                    'text' => 'List All Members',
+                    'text' => ' All Members',
                     'url' => 'member/index',
                     'icon' => 'fas fa-caret-right',
 
                 ],
                 [
-                    'text' => 'Create New Member',
+                    'text' => 'New Member',
                     'url' => 'member/create',
+                    'icon' => 'fas fa-caret-right',
+
+                ],
+                [
+                    'text' => 'Import from excel',
+                    'url' => 'member/importform',
                     'icon' => 'fas fa-caret-right',
 
                 ],
