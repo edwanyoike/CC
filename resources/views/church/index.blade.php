@@ -55,6 +55,11 @@
 
                                 <td>
                                     {{$church->code}}
+
+                                    @if ($church->isMotherChurch)
+                                       <br> <i><b> (mother church)</b></i>
+                                    @endif
+
                                 </td>
 
                                 <td>

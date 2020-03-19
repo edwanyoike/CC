@@ -6,13 +6,11 @@ namespace App\Http\Controllers;
 use App\Address;
 use App\Church;
 use App\Department;
-use App\Imports\MembersImport;
 use App\Member;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -149,34 +147,102 @@ class MemberController extends Controller
 
         try {
             $this->validate($request, [
-             //   'file' => 'required|mimes:xls,xlsx'
+                   'file' => 'required|mimes:xls,xlsx'
             ]);
         } catch (ValidationException $e) {
             return back()->with('error', 'An error occurred while validating data');
         }
 
-        $path = $request->file('file')->getRealPath();
+        try {
 
-        $reader =IOFactory::createReaderForFile($path);
-        $reader->setReadDataOnly(true);
-        $spreadsheet = $reader->load($path);
+            $path = $request->file('file')->getRealPath();
 
-        $worksheet = $spreadsheet->getActiveSheet();
-        $rows = [];
-        foreach ($worksheet->getRowIterator() AS $row) {
-            $cellIterator = $row->getCellIterator();
-            $cellIterator->setIterateOnlyExistingCells(true); // This doesnt' loops through all cells,
-            $cells = [];
-            foreach ($cellIterator as $cell) {
-                $cells[] = $cell->getValue();
+            $reader = IOFactory::createReaderForFile($path);
+            $reader->setReadDataOnly(true);
+            $spreadsheet = $reader->load($path);
+
+            $worksheet = $spreadsheet->getActiveSheet();
+            $rows = [];
+            foreach ($worksheet->getRowIterator() AS $row) {
+                $cellIterator = $row->getCellIterator();
+                $cellIterator->setIterateOnlyExistingCells(true); // This doesn't loops through all cells only them with data,
+                $cells = [];
+                foreach ($cellIterator as $cell) {
+                    $cells[] = $cell->getValue();
+                }
+                $rows[] = $cells;
             }
-            $rows[] = $cells;
+
+
+            //
+            if (count($rows) > 0) {
+                unset($rows[0]);
+
+                try {
+
+                    foreach ($rows as $row) {
+
+                        $churchCode = $row[6];
+
+                   //     $church = DB::table('churches')->where('code', $churchCode)->first();
+
+                        $church = Church::where('code', $churchCode)->first();
+
+
+                        if ($church !== null) {
+                            $firstName = $row[0];
+                            $secondName = $row[1];
+                            $gender = $row[2];
+
+                            $phoneNumber = $row[3];
+                            $emailAddress = $row[4];
+                            $location = $row[5];
+
+                            $member = new Member();
+                            $member->firstName = $firstName;
+                            $member->secondName = $secondName;
+                            $member->gender = $gender;
+
+
+                            $church->members()->save($member);
+
+                            $member->save();
+
+                            $address = new Address();
+
+                            $address->phoneNumber = $phoneNumber;
+                            $address->emailAddress = $emailAddress;
+                            $address->location = $location;
+
+
+                            $member->address()->save($address);
+
+
+                        } else {
+                            return back()->with('error', 'specify a church code in the system');
+                        }
+
+
+                    }
+                    //
+
+                } catch (Exception $e) {
+                    return back()->with('error', $e->getMessage() );
+
+                }
+
+
+            }
+        } catch (Exception $e) {
+            return back()->with('error', 'An error occurred while reading file');
+
         }
 
-        dd($rows);
-
+        return back()->with('success', 'members imported successfully');
 
     }
+
+
 
 
     /**

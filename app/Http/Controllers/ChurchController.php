@@ -75,6 +75,7 @@ class ChurchController extends Controller
             $church->code = 'C'.$church->id;
 
             $church->address()->save(new Address(request(['phoneNumber', 'emailAddress', 'location'])));
+            $church->save();
         });
 
         return redirect('church/index');
